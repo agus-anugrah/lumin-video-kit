@@ -1,0 +1,8 @@
+{
+  "note": "Draft targets for Lumin ads on Meta/TikTok/YouTube. scripts/loudness.py uses -14 / -1 by default.",
+  "master": { "integrated_lufs": -14, "true_peak_dbtp": -1, "lra": 11 },
+  "dialogue": { "integrated_lufs": -16 },
+  "music_bed": { "under_voice_db": -22, "fade_out_s": 2, "vocals_check_limit_lufs": -40 },
+  "sfx": { "peak_dbfs": -15 },
+  "voiceover": { "max_full_takes": 2, "voice_candidates": 3 }
+}

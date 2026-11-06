@@ -1,0 +1,12 @@
+{
+  "note": "Lumin formats: VS = short 9:16, VM = medium 4:5, VL = long 4:5. Name files with the ad code.",
+  "formats": {
+    "VS": { "width": 1080, "height": 1920, "ratio": "9:16" },
+    "VM": { "width": 1080, "height": 1350, "ratio": "4:5" },
+    "VL": { "width": 1080, "height": 1350, "ratio": "4:5" },
+    "YT": { "width": 1920, "height": 1080, "ratio": "16:9" }
+  },
+  "video": { "codec": "H.264", "fps": 30, "crf": 18, "pix_fmt": "yuv420p" },
+  "audio": { "codec": "AAC", "bitrate": "192k", "sample_rate": 48000 },
+  "generated_clips": { "default_resolution": "720p", "upscale_to": "1080p when the model can't" }
+}

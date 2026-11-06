@@ -1,0 +1,24 @@
+# Preset: 3D animated
+
+> DRAFT by Claude, 2026-11-07. Salam to review.
+
+For explainer moments (what happens at the follicle, why tight styles cause traction, how inflammation
+blocks growth) and for whole animated ads when the brief asks for a family-film 3D look.
+
+## Look
+Soft, rounded 3D characters with expressive faces, clean stylised homes, warm light. Original
+characters only: never copy a studio's characters, style names or logos in prompts.
+
+## Characters
+A Black woman lead in her 40s with a clearly readable hair situation (thin edges, a wig, a bonnet);
+same face, outfit and proportions in every shot (character sheet first, faceless product views for
+the bottle).
+
+## Explainer shots
+Cutaway of a scalp with follicles (simple, not medical-gory), tight braids pulling at the hairline,
+a calm "inside the body" view of ingredients reaching the scalp. Keep science claims to what the
+script says.
+
+## Never
+Real product label generated in 3D (use the real product photo composited, or a faceless bottle
+shape), medical imagery that looks like a hospital, scary or gross close-ups, showing regrowth results.
