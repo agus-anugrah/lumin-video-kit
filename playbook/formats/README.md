@@ -50,6 +50,10 @@ drop the tests.
 5. **Week-by-week timeline** (week 1–2 shedding stops, week 3–4 baby hairs, week 6–8 edges and crown).
 6. **Status flip**: she walks back into the same room (the pool, the church, the wedding, the dinner)
    and the person who shamed her is the one who's speechless, or asks for the secret.
-7. **Every one of these is remade from a competitor's winning ad** (the strategists find them on Atria,
+7. **On screen (four winners watched 2026-11-09):** big face close-ups with a cut every 2–3 s; the
+   hair problem visible in the first frame; the real bottle shown once, in the mentor's hands; outline
+   captions of 2–4 words (not the box); and **none of them ends on a clear offer card** (one has a faint
+   see-through line of text). That's the first thing to test.
+8. **Every one of these is remade from a competitor's winning ad** (the strategists find them on Atria,
    app.tryatria.com, or the Facebook Ad Library) and adapted to Black women and our mechanism. That is
    the job of the competitor research step.

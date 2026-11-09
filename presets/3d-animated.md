@@ -11,9 +11,12 @@ Soft, rounded 3D characters with expressive faces, clean stylised homes, warm li
 characters only: never copy a studio's characters, style names or logos in prompts.
 
 ## Characters
-A Black woman lead in her 40s with a clearly readable hair situation (thin edges, a wig, a bonnet);
-same face, outfit and proportions in every shot (character sheet first, faceless product views for
-the bottle).
+A Black woman lead with a clearly readable hair situation (thin edges, a sparse crown, a wig, a
+headband); same face and proportions in every shot (character sheet first, faceless product views for
+the bottle). In the winning cartoons (watched 2026-11-09) the lead reads as 30s–40s, warm and pretty,
+big expressive eyes, gold hoops; her "after" is big, voluminous curly natural hair. The mentor is
+clearly older: grey locs or twists, a headwrap, African print. Shots are mostly face close-ups.
+Mechanism shots can switch to a realistic 3D medical cross-section (Lymphoria does).
 
 ## Whole animated ads (3D Pixar and Song formats)
 The story beats are in `playbook/formats/pixar.md` and `playbook/formats/song.md`. This preset is only

@@ -22,7 +22,8 @@ Style rules are in `presets/captions.md`. Read them first.
    - **CapCut**: give the editor `captions.srt` to import (Text > Captions > import), or burn in.
    - **Burn-in / review**: set `"captions": "<job>/captions/captions.ass"` in `timeline.json` and render
      with `--burn-captions`. Default style is the winners' black text on a white box; pass
-     `--style outline` to captions.py for white text with the spoken word in yellow.
+     `--style outline` to captions.py for white text with the spoken word in yellow. **3D Pixar, Song
+     and Movie drama always use `--style outline`** (`presets/captions.md`).
 4. Check frames from the render: captions inside the safe zone, not covering a face or the bottle,
    readable on bright backgrounds.
 

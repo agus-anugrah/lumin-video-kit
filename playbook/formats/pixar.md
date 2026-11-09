@@ -35,6 +35,26 @@ Meta put ~95% of each batch's spend on one hook. The winner was always the **mos
 - gymaffair: Hook 2, the crude insult, not the polite "He's with me" (Hook 1).
 - darnell: Hook 2, the wife openly praising another man's hair with powder on her fingers.
 
+## What the winner looks like on screen (abusiveman Hook 3, watched frame by frame 2026-11-09)
+6:47, 9:16. Runs from a persona page ("Denise Smith") with first-person copy: "I was done hiding behind
+wigs y'all… Lumin Root Revive is what finally filled in my edges & crown", headline "No More Covering,
+Hiding, or Stressing", Shop now.
+- 0:00 resort pool with a palm-thatch bar, the husband and his friends laughing in the water; 0:09 she
+  backs up with the phone for his photo; 0:17 underwater: the colourful headband and her phone sinking;
+  0:20 his shocked face, extreme close-up.
+- Almost every shot is a **big-eyed face close-up**, a cut every 2–3 seconds. Wide shots only to set a place.
+- 1:20 "Embarrassing you? Yeah" in the hotel room; 1:55 the hair reveal at the bathroom mirror: very short,
+  sparse hair on top, readable at thumbnail size; 2:36 an older white male dermatologist in a white coat
+  ("concentrate the platelets").
+- 3:14 headscarf on the park bench; 3:55 the elder in a gold-and-green headwrap holds the **real Root Revive
+  bottle, label readable**, on "not genetics"; 4:19 her full grey twists with the bottle again.
+- 4:58 the flip: she leads the meeting, sleek bun, gold hoops; 5:27 "What? I'm done" to the husband;
+  6:03–6:41 big curly natural hair, African-print shirt, passing it on.
+- **The cartoon lead reads as 30s, glamorous and curvy**, not 45–60 like the photoreal rule; the "after" is
+  big, voluminous curly hair. The mentor is clearly older (grey locs, headwrap, African print).
+- Captions: 2–3 words, bold white capitals, one key word yellow, lower middle.
+- **Ends on her face with no offer card, no bottle, no URL** on screen. Biggest gap to test (below).
+
 ## Test (our hypotheses for the sale end; these ads sit at ROAS ~0.8)
 - The offer appears once, inside the mentor's dialogue, 4 minutes in. Add an **offer card** (60% off for
   first-time customers if the brief says so, 90-day guarantee, trylumin.co) at beat 9 and again at the end.

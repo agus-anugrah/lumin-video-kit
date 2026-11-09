@@ -33,6 +33,22 @@ me". Christmas Hook 2 (mother-in-law laughing, 14 people, husband cutting turkey
 Sunday service Hook 2 (the ex brings the homewrecker to church). The winner names **who** did it, **what
 they said about her hair**, and **who watched**.
 
+## What the winner looks like on screen (Lymphoria Hook 3, watched frame by frame 2026-11-09)
+5:00, 9:16, from the Lumin page; headline "Fill In Your Edges & Crown 🧡".
+- 0:00 first frame: her at a lit vanity mirror, hair in a puff, the caption "My mama asked me" big in the
+  middle. The hook is on screen from frame one.
+- Pixar-style family film: Jasmine's long hair swinging (0:19), mama in green with grey hair at the
+  engagement (0:45), her clutching her thin crown at night on "Minoxidil every night" (1:15).
+- 1:45 **the mechanism is a realistic 3D medical cross-section** of a follicle ("They just shut down"),
+  not a cartoon.
+- 2:15 "Week four": **a realistic macro of a scalp with baby hairs**, cut into the cartoon. In the kit
+  that shot must be real footage (B-roll library), never generated: it's a proof shot (CLAUDE.md rule 3).
+- 3:13 the wedding dress at mama's house; 3:43 the reception with champagne; 4:13 the coffee-cup ending
+  ("the pretty one"); 4:38 the bottle small at the bottom on "Two capsules a day"; 4:56 ends on her
+  smiling face with long curly hair. **No offer card at the end.**
+- Captions: white sentence case with a dark outline, 2–4 words, no colour. The lead reads 30s and pretty
+  in the cartoon style, like the Pixar winner.
+
 ## Test
 - The two best song ads both say the offer (60% off, 90-day guarantee, link below) in the last lines.
   Keep it; add an on-screen offer card under the last verse.

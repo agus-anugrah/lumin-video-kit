@@ -45,6 +45,30 @@ ID, the classmates, the whispering women in the elevator who don't know she unde
 Shape B uses the same opening rules (thrown into the fight, the twist inside 10 seconds, the cruel line
 about her hair: "Look at your aunt. Look at how sexy her hair is") and then follows `pixar.md`.
 
+## What they look like on screen (watched frame by frame 2026-11-09)
+
+**pregnant-aunt Hook 2** (shape B, 5:19, Lumin page): photoreal and gritty, not glossy. A dim motel
+corridor, Keisha in a grey hoodie pounding on door 12 and shouting (0:00–0:03); Jerry in a puffer vest with
+grocery bags (0:20–0:41); a night exterior of the apartment block with her car leaving (1:05); muted,
+desaturated TV-drama grade. 1:35 a close-up of a woman with a severely thinning hairline on "the shedding
+didn't stop" (looks like real footage). 2:05–2:49 the park bench in a black headwrap. 3:34 **the real
+bottle in her hands, label readable**. 4:19 she walks into church through wooden doors in a blue dress. 5:16
+ends on her face with the bottle composited bottom left and a **faint, see-through "ROOT REVIVE BY LUMIN –
+CLICK HERE TO TRY RISK-FREE" over her face**: hard to read. Captions: small white lower-case, one yellow word.
+Check for the kit: the lead's face across the motel, the bench and the church should be one person; in
+these frames it isn't obvious that it is.
+
+**School Reunion Hook 2** (shape B, 3:45, ROAS 1.01 on small spend): **stylised semi-realistic 3D**, between
+Pixar and photoreal. 0:00 the reunion banquet hall, balloons and sequins, her short thin natural hair
+visible in the very first frame at the punch bowl; 0:03 three women whispering behind their hands. 0:34
+her in the car on the phone ("Something is wrong with…"); 1:20 the old friend in the coffee shop ("I wore a
+wig"); 2:03 her in a headwrap: "That's it?"; 2:48 the garden party; 3:22 long twists: "I'll send you the
+link." Ends on the two women with champagne. **No offer card, no bottle at the end.** Captions: white
+sentence case with a dark shadow, 2–4 words.
+
+Takeaways: the problem hair is visible in frame one; both close on faces without the offer on screen;
+the real bottle appears once, in someone's hands.
+
 ## Hooks that won
 pregnant-aunt Hook 2 (screaming at the motel door before it opens) took most of the spend over the calm
 "Mama? What are you doing here?". Lead with the loudest, most charged second of the scene.

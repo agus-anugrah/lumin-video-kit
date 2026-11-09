@@ -9,8 +9,12 @@
 - **Sale ads**: an offer banner on screen the whole time (e.g. black "SAVE 60% OFF" on yellow at the top)
   and the hook as a comment-reply sticker ("Reply to Samantha's comment: …").
 - **Cards**: 1–8 words split by meaning; never split "Root Revive", a number and its unit, or a name.
-- **Optional burn-in style "outline"** (white text, black outline, the spoken word in yellow) only when
-  the brief asks for it.
+- **Story formats (3D Pixar, Song, Movie drama) use "outline" instead** (`captions.py --style outline`):
+  white text with a dark outline or shadow, 2–4 words a card, lower middle. That's what all four story
+  winners use (watched 2026-11-09). abusiveman and pregnant-aunt colour one key word yellow ("NOT
+  **GENETICS** NOT", "**starves** the roots"); Lymphoria and School Reunion keep it all white. The box
+  would cover the faces these ads live on.
+- **Optional burn-in style "outline"** in the other formats only when the brief asks for it.
 - **Problem / solution colour** (only when the brief asks): a red word box on a problem word, green on
   the Root Revive card.
 - **Safe zone (9:16, 1080x1920)**: text between y 300 and y 1620, away from the right edge (x > 940)
