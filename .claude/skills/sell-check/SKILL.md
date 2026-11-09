@@ -5,29 +5,37 @@ description: Check a Lumin script, storyboard or finished ad against what actual
 
 # Sell check
 
-Read `playbook/what-sells.md` first. Then score the script, storyboard or ad against the list below.
+Read `playbook/what-sells.md` first, then the beat map for the batch's format (`brief.md`, "Format
+family"; `playbook/formats/`). Then score the script, storyboard or ad against the list below.
 Report each line as PASS / FIX (with the exact fix) / N/A. Any FIX on lines 1–6 blocks generation or
 delivery until it's fixed or the strategist says to go anyway.
 
 ## Script (before anything is generated)
-1. **Traffic and format match.** Cold traffic (TOF/MOF, problem or solution aware) → story VSL or
-   animated drama. Warm traffic (BOF, product or most aware) → sale/offer, short. If the brief mixes
+1. **Traffic and format match.** Cold traffic (TOF/MOF, problem or solution aware) → story VSL, 3D Pixar,
+   song or movie drama. Warm traffic (BOF, product or most aware) → sale/offer, short. If the brief mixes
    them, ask.
 2. **Hook** names a specific person + age + number/timeframe, or a specific moment, in the first
-   sentence. Generic hooks ("Do you have hair loss?") = FIX with 3 rewrites in the winning patterns.
-3. **Structure** has the beats in order: promise → everything that failed → the hiding → trusted
-   discovery → authority → mechanism → product → timeline → proof → guarantee → offer + CTA. Missing
-   beats = FIX (say which and where).
+   sentence. Generic hooks ("Do you have hair loss?") = FIX with 3 rewrites in the winning patterns. In
+   the story formats, at least one hook is the blunt confrontation (who shamed her, what they said about
+   her hair, who watched); all soft = FIX with one blunt rewrite.
+3. **Structure** has the beats of the format's beat map, in order (Story VSL: promise → everything that
+   failed → the hiding → trusted discovery → authority → mechanism → product → timeline → proof →
+   guarantee → offer + CTA; the others: their file in `playbook/formats/`). Missing beats = FIX (say which
+   and where). In the story formats, also check the offer is said near the end and gets an on-screen
+   offer card (the beat maps' "Test" lines).
 4. **Avatar** in the words and the visuals matches the brief (Black women, default 40–60). Off-avatar
-   (men, young glam) = FIX unless the brief asks for it.
+   (men, young glam) = FIX unless the brief asks for it (Batch 54 darnell is a men's ad that works).
 5. **Offer facts** match the brief (guarantee days, discount, shipping). Unknown = ask, don't invent.
 6. **Claims**: flag medical promises and anything the strategist must sign off. Don't rewrite claims
    yourself; list them.
 
 ## Storyboard (before clips are generated)
-7. **Real where it counts**: the hook problem shot, hiding, scalp close-ups, testimonials and any
-   before/after are real footage (or marked REAL NEEDED). AI is used for animation, mechanism, product
-   (from real photos), places and filler. If a photoreal AI woman speaks as "I", it's one Soul ID, one face.
+7. **Real where it counts** (Story VSL and Sale): the hook problem shot, hiding, scalp close-ups,
+   testimonials and any before/after are real footage (or marked REAL NEEDED). AI is used for animation,
+   mechanism, product (from real photos), places and filler. If a photoreal AI woman speaks as "I", it's
+   one Soul ID, one face. **3D Pixar, Song, Movie drama:** fully AI is fine, but it must read as a cartoon
+   or a movie scene (characters talking to each other), never as a real customer talking to camera, and
+   every character keeps one face.
 8. **Visual per story beat**, not per word. Each beat has a clear picture of the moment (her pew at the
    back, the wig on the stand, the shower drain, the sister on a video call).
 9. **First frame** is the most specific emotional moment of the hook, with hook text in the safe zone.

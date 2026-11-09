@@ -9,8 +9,10 @@ Script in, first cut out. Four stops where a person decides; everything between 
 
 The goal is an ad that **sells**, not just a fast one. Read `playbook/what-sells.md` before planning:
 it holds the winning structure, the hook patterns, the numbers, and why the team's earlier AI remakes
-failed (different women in every shot, fake before/afters, wrong age, glossy look). Run the `sell-check`
-skill at the plan and at the end.
+failed (different women in every shot, fake before/afters, wrong age, glossy look). Then read the
+**beat map for the batch's format** (`brief.md` names it under "Format family"; all of them are in
+`playbook/formats/`): 3D Pixar, Song, Movie drama, Story VSL or Sale. Run the `sell-check` skill at the
+plan and at the end.
 
 ```
 brief + script ─► 1 plan ─► STOP ─► 2 voiceover ─► STOP ─► 3 sheets ─► STOP ─► 4 storyboard
@@ -29,25 +31,31 @@ script. Everything for this ad lives in that job folder; keep `job.md` current a
 Read the brief and script. Write into `job.md`:
 - **Angle** (offer, industry expose, transformation, personal story, objection, ancient African story…)
   and **format**: VS 9:16 short, VM 4:5 medium, VL 4:5 long (Lumin codes). Default 9:16.
-- **Preset** from `presets/` that fits the angle (`ugc-iphone`, `realistic-drama`, `ancient-story`,
-  `3d-animated`). One preset for the whole ad.
+- **Format family** and its beat map (from `brief.md`; unknown = ask the strategist).
+- **Preset** from `presets/`, one for the whole ad. By format: 3D Pixar and Song → `3d-animated`;
+  Movie drama → `realistic-drama` ("Movie scene" section); Story VSL and Sale → `ugc-iphone`,
+  `realistic-drama` or `ancient-story`, whichever fits the angle.
 - **Cast**: each recurring person (age, look, hair situation, wardrobe, home). Default from the preset.
 - **Scene table**: one row per script line → what we see, shot type (talking head TH / B-roll / product /
   graphic / real UGC needed), place. Mark any line that needs **real proof** (before/after, results,
   testimonials) as "REAL UGC NEEDED"; never generate it.
 - **Never-show list** for this ad (from `presets/never.md` plus anything in the brief).
 - **Protagonist**: the one woman whose story it is (age, look, hair situation, home). Every "I" shot is her.
-- **Real or AI per line**: trust beats (hook problem shot, hiding, scalp close-ups, "me now", proof)
-  are REAL NEEDED first: search the Lumin B-roll library and creator footage before planning AI. AI covers
-  animation, mechanism, product (from real photos), places, props and filler. For a fully AI ad, prefer
-  the animated drama format (it's clearly fiction and has the account's best hold).
-- **Beat map**: tag each script line with its beat from the playbook structure (hook, failed products,
-  hiding, discovery, authority, mechanism, product, timeline, proof, guarantee, offer). The visual for a
-  line comes from its beat and her story, not from the single word being said.
+- **Real or AI per line**: in a Story VSL or Sale ad, trust beats (hook problem shot, hiding, scalp
+  close-ups, "me now", proof) are REAL NEEDED first: search the Lumin B-roll library and creator footage
+  before planning AI. AI covers animation, mechanism, product (from real photos), places, props and
+  filler. 3D Pixar, Song and Movie drama are fully AI by design: they're clearly a cartoon or a movie
+  scene, never presented as a real customer (see each beat map's production notes).
+- **Beat map**: tag each script line with its beat from the format's beat map. The visual for a line
+  comes from its beat and her story, not from the single word being said. Missing beats go in the
+  sell check.
+- **Hooks**: the beat maps show Meta always spent on the bluntest hook (who shamed her, what they said
+  about her hair, who watched). If all of the script's hooks are soft, propose one blunt rewrite.
 - **Credit estimate** for the whole run (`higgsfield generate cost ...` per model, or Weave quotes).
 
-Run `sell-check` on the script. If there's no script yet, draft one in the playbook structure with 3 hook
-options for the strategist to approve; never generate from an unapproved script.
+Run `sell-check` on the script. If there's no script yet, draft one on the format's beat map with 3 hook
+options (one of them the blunt confrontation) for the strategist to approve; never generate from an
+unapproved script.
 
 **Stop:** show the plan, the sell-check table and the estimate. Wait for "go" or changes.
 
@@ -59,6 +67,13 @@ render the first line with each (1 generation each). **Stop:** editor picks. The
 seconds column of the scene table from the real timings.
 
 If the script has a talking head, the VO file is also the lip-sync audio for Seedance.
+
+By format:
+- **3D Pixar / Movie drama**: dialogue, so one voice per character (pick 3 candidates for each main
+  character the same way) plus the narrator if there is one. Render line by line into `vo/<scene>_<line>`
+  so each Seedance dialogue shot gets its own audio.
+- **Song**: the song is the voice. Follow "Songs" in the `voice-music` skill: the editor makes it on
+  suno.com from the lyrics you prepare, you transcribe it for timings. No separate VO.
 
 ## 3. Sheets (who and what stays the same)
 

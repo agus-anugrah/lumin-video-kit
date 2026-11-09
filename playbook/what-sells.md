@@ -7,6 +7,10 @@ ThruPlays ÷ impressions). Use them to compare ads with each other, not as profi
 
 Refresh this file every month or so: re-run the queries in "How to refresh" and update the tables.
 
+**Formats:** this file covers the Story VSL and the Sale ad. The 3D Pixar, Song and Movie drama formats
+(the ones that worked in the last 30 days) each have their own beat map in `formats/`; `formats/README.md`
+says which one a batch uses.
+
 ## The numbers
 
 Account, last 60 days: **$921k spend, ROAS 0.86, CPA $65, hook 25.8%, hold 11.0%.**
@@ -87,12 +91,8 @@ What this means for anything the kit makes:
 12. **Offer + soft CTA**: "Last time I checked they were running 60% off for first-time customers. I'll
     leave the link below." Scarcity: "sells out fast".
 
-The animated drama VSL is the same structure told as scenes: a humiliation moment that exposes her hair
-(falls in a pool, headband floats away) → someone cruel (the husband: "You're embarrassing me") → the
-expensive dead end (dermatologist, PRP at $1,500 a session) → a wise elder (Ghanaian woman with full grey
-locs) explains the root cause and the product, price under $1 a day, guarantee, trylumin.co, sells out
-fast → flash-forward three months: confident at work, at dinner, at church → she passes it on to the
-next woman.
+The animated drama VSL (3D Pixar), the song and the movie drama tell the same story as scenes. Their
+beat maps are in `formats/pixar.md`, `formats/song.md` and `formats/movie-drama.md`.
 
 The sale ad: hook = the sale ("Lumin is running the BIGGEST summer sale in history") → urgency (ends at
 midnight, 60% off + free shipping) → a 2-line transformation story → guarantee → "tap below".
@@ -115,8 +115,8 @@ So the script wasn't the problem. The pictures broke the trust the words were bu
    woman with a full natural afro saying "at 55 in just 6 weeks". Viewers spot it, it reads as fake,
    and it's a policy risk.
 3. **Wrong avatar.** Hook says "Black woman over 50" or "47-year-old", and the screen shows women in
-   their 20s, glam models with red lips, long straight wigs. One ad targeted Black men (not Lumin's
-   buyer).
+   their 20s, glam models with red lips, long straight wigs. One ad showed Black men although its
+   brief was for women. (A men's ad on a men's brief can work: Batch 54 darnell, ROAS 0.88.)
 4. **Glossy instead of real.** Hotel lobbies, studio portraits, event dinners, cinematic light. The
    winners' world is her bathroom mirror, her car, her church pew.
 5. **Visuals illustrate words, not the story.** A rosemary jar on "try this", a random dinner party on

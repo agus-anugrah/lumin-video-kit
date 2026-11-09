@@ -34,16 +34,19 @@ Lumin codes: BP = big project (new production) in **VS** (short, 9:16), **VM** (
    re-encode over or delete it.
 3. **No fake proof.** Never generate photoreal before/after, regrowth, "results", a hairline that fills
    in, or anything showing the product working. Proof comes from real customer footage only. Mark such
-   lines "REAL UGC NEEDED" and move on. Only exception: in a clearly animated (cartoon) story, the
-   character's own arc may end with fuller hair, with the strategist's OK.
-3b. **Real footage for trust, AI for the rest.** Profitable Lumin ads use real footage for the hook
-   problem shot, the hiding, scalp close-ups and proof; AI-realistic versions got clicks and lost money.
-   Use AI for animation (the animated drama format), mechanism, product shots from real photos, places
-   and filler. A photoreal AI "I" speaker is one woman locked with a Soul ID, the same face throughout.
+   lines "REAL UGC NEEDED" and move on. Only exception: in a story format that's clearly fiction
+   (3D Pixar, Song, Movie drama), the character's own arc may end with fuller hair, with the
+   strategist's OK, never presented as a real customer.
+3b. **Real footage for trust, AI for the rest.** In Story VSL and Sale ads, profitable Lumin ads use real
+   footage for the hook problem shot, the hiding, scalp close-ups and proof; AI-realistic versions got
+   clicks and lost money. Use AI there for mechanism, product shots from real photos, places and filler.
+   The story formats (3D Pixar, Song, Movie drama) are fully AI by design. A photoreal AI speaker is one
+   person locked with a Soul ID, the same face throughout.
 4. **The bottle is never invented.** Product shots use the real photos in `references/product/`.
    Folder empty = no product shots, say so. No generated label text.
-4b. **Make it sell, not just fast.** Read `playbook/what-sells.md` before planning any ad and run the
-   `sell-check` skill at the plan and before delivery.
+4b. **Make it sell, not just fast.** Read `playbook/what-sells.md` and the beat map for the batch's
+   format (`playbook/formats/`, named in `brief.md`) before planning any ad, and run the `sell-check`
+   skill at the plan and before delivery.
 5. **Taste lives in the presets.** Read `presets/never.md`, the chosen preset and `rules.md` before
    writing any prompt. One preset and one cast per ad.
 6. **Still first, then video.** Approve the still before spending on a clip.

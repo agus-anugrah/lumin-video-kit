@@ -159,6 +159,34 @@ def slug(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:50]
 
 
+# The app's format labels -> the kit's format families (playbook/formats/README.md). First match wins,
+# so "Pixar-Style Song" is a song and "AI Pixar VSL" is Pixar. Add new labels here and in the README.
+FAMILIES = [
+    ("song", "Song", "playbook/formats/song.md", ("song", "singing")),
+    ("movie-drama", "Movie drama", "playbook/formats/movie-drama.md", ("movie", "cinematic", "cinema", "drama")),
+    ("pixar", "3D Pixar", "playbook/formats/pixar.md", ("pixar", "animation", "animated", "3d")),
+    ("sale", "Sale", "playbook/what-sells.md (sale ad)", ("sale",)),
+    ("static", "Static", "not a video", ("static",)),
+    ("vsl", "Story VSL", "playbook/what-sells.md (12-beat VSL)",
+     ("vsl", "podcast", "voiceover", "voice over", "b-roll", "talking head", "ugc", "transformation", "personal")),
+]
+SCRIPT_FORMAT_LINE = re.compile(r"(?:format(?:/style)?|ad format)\s*[:\n\t]+\s*([^\n]{2,60})", re.I)
+
+
+def format_family(app_format, script_text=""):
+    """(family key, label, beat map, where it came from) for a batch, or None when nothing matches."""
+    candidates = [(app_format, "the app's format")] if app_format else []
+    m = SCRIPT_FORMAT_LINE.search(script_text[:3000]) if script_text else None
+    if m:
+        candidates.append((m.group(1).strip(), "the script's header"))
+    for value, source in candidates:
+        low = value.lower()
+        for key, label, beat_map, words in FAMILIES:
+            if any(w in low for w in words):
+                return key, label, beat_map, f'{source} "{value}"'
+    return None
+
+
 # ---------- commands ----------
 
 def cmd_login(_):
@@ -259,13 +287,22 @@ def cmd_get(args):
             for a in assets)
 
     script_note = "no script link on the batch"
+    text = ""
     if b["script_link"]:
         text, err = fetch_doc(b["script_link"])
         if text:
             (job / "script.txt").write_text(text, encoding="utf-8")
             script_note = f"script.txt ({len(text):,} characters, from the batch's script tab)"
         else:
+            text = ""
             script_note = f"script not downloaded: {err}"
+    family = format_family(b["format"], text)
+    if family:
+        brief += (f"\n## Format family\n\n**{family[1]}** (from {family[3]}). Beat map: `{family[2]}`. "
+                  "Plan the ad on these beats.\n")
+    else:
+        brief += ("\n## Format family\n\nUnknown: no format in the app or the script header. Ask the strategist "
+                  "which one it is (see `playbook/formats/README.md`).\n")
     brief += f"\n## Script\n\n{script_note}\n"
     (job / "brief.md").write_text(brief, encoding="utf-8")
 
@@ -280,6 +317,7 @@ def cmd_get(args):
     print(f"{b['code']} {b['name']} · {STAGE_NAMES.get(b['stage'], b['stage'])} · {b['format'] or 'no format'}"
           f" · strategist {who.get(b['strategist_id'], '?')}")
     print(f"brief.md written · {script_note} · {len(hooks)} hook(s) · {len(assets)} file(s)")
+    print(f"format family: {family[1]} -> {family[2]}" if family else "format family: unknown, ask the strategist")
 
 
 def cmd_broll(args):

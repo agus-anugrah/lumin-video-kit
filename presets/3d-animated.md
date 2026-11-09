@@ -15,13 +15,11 @@ A Black woman lead in her 40s with a clearly readable hair situation (thin edges
 same face, outfit and proportions in every shot (character sheet first, faceless product views for
 the bottle).
 
-## Animated drama VSL (Lumin's "Pixar-style VSL" format: highest hold in the account, 25–37%)
-Scenes, not a talking head: the humiliation moment that exposes her hair → the cruel person (husband,
-gossiping church women) → the expensive dead end (dermatologist, PRP at $1,500 a session) → the wise
-elder who explains the root cause and the product (price under $1 a day, 90-day guarantee, trylumin.co,
-sells out fast) → flash-forward three months (work, dinner, church) → she passes it on. Music with
-movie-style accents, not a flat background bed. Her hair arc can end fuller because it's clearly a
-cartoon story, with the strategist's OK; never use the real bottle label as generated 3D text.
+## Whole animated ads (3D Pixar and Song formats)
+The story beats are in `playbook/formats/pixar.md` and `playbook/formats/song.md`. This preset is only
+the look. Music with movie-style accents on every reveal, not a flat bed (Song: the song is the audio).
+Her hair arc can end fuller because it's clearly a cartoon story, with the strategist's OK; never use
+the real bottle label as generated 3D text (composite the real photo instead).
 
 ## Explainer shots
 Cutaway of a scalp with follicles (simple, not medical-gory), tight braids pulling at the hairline,

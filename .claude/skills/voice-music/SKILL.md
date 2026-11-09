@@ -1,6 +1,6 @@
 ---
 name: voice-music
-description: Voiceover, voice matching, sound effects and music beds for Lumin ads, with ElevenLabs and Suno. Use for "make the VO", "pick a voice", "change her voice", "add music", "BGM", "sound effects", "SFX", or any audio generation or audio check.
+description: Voiceover, voice matching, sound effects and music beds for Lumin ads, with ElevenLabs and Suno. Use for "make the VO", "pick a voice", "change her voice", "add music", "BGM", "sound effects", "SFX", "make the song", "lyrics", or any audio generation or audio check.
 ---
 
 # Voice and music
@@ -49,6 +49,19 @@ industry expose → low, serious pulse; offer → light, upbeat, not cheesy. Not
 
 Check every music file: `python3 scripts/vocals_check.py <file>` must PASS (no vocals). If it fails,
 use the `no_vocals.wav` it made, or pick another take.
+
+## Songs (the Song format, `playbook/formats/song.md`)
+Here the song is the ad's voice, so the "nothing with vocals" rule doesn't apply.
+1. Turn the approved script into lyrics: verses only, the story's lines nearly word for word, every
+   product fact exact (name, two capsules, offer, guarantee). Save `audio/lyrics.txt` with each verse
+   under a `[Verse]` tag; never `[Chorus]` (Suno repeats chorus lines).
+2. Style line for Suno: soul / R&B ballad, warm Black female lead vocal, vocals from the first second,
+   no long intro, no rap. If the strategist gave a Suno reference link, match it.
+3. The editor makes it on suno.com (captcha) and saves the take into `audio/`. ElevenLabs music can
+   also sing lyrics; use it only if the editor or strategist asks (cost first).
+4. Transcribe the song (`scripts/transcribe.py`) for word timings: captions are the lyrics, and each
+   shot is cut on its line. Check the transcript for wrong product words; a wrong word = new take.
+5. Level the song like a VO (it is one): see below. No extra music bed.
 
 ## Levels (presets/audio.json)
 VO is king: dialogue around −16 LUFS before the master; music bed 20–24 dB under the voice with a

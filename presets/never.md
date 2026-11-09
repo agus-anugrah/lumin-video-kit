@@ -3,6 +3,16 @@
 > Built from Lumin's flops and profitable ads (2026-11-09). Salam owns this list; add a line with date
 > and who for any change.
 
+## Story formats bend some of these (2026-11-09)
+3D Pixar, Song and Movie drama (`playbook/formats/`) are fiction on purpose, and they hold attention
+better than anything else in the account. In those formats only:
+- The character's own hair arc may be shown (thin → full), with the strategist's OK, as part of the
+  story. Never with "real results" text, customer names, or someone presenting it to camera as real.
+- Movie drama uses a film look on purpose (TV-drama light, shallow depth of field, music stings, push-ins).
+  The "Never (look)" rules below are for the real-look formats (UGC, Story VSL, Sale).
+- Every rule about faces still applies: one face per character for the whole ad.
+- Men are fine when the brief is a men's ad (Batch 54 darnell, ROAS 0.88).
+
 ## Never (claims and compliance)
 - Before/after, regrowth over time, "results", a hairline that fills in, a fuller version of the
   same woman. Proof only comes from real customers.

@@ -30,3 +30,16 @@ holding an old photo of her full hair · quiet relief at the mirror (without sho
 
 ## Never
 Melodrama acting, tears that look glued on, slow-motion, film-trailer lighting, showing any result.
+
+## Movie scene (the Movie drama format, `playbook/formats/movie-drama.md`)
+A different contract: the ad pretends to be a clip from a TV drama, so it looks like one.
+- **Look:** TV-drama or short-drama-app light, a little contrast, shallow depth of field on close-ups.
+  Not glossy-commercial, not phone footage.
+- **Camera:** coverage like a series: wide to set the place, over-the-shoulder for dialogue, tight
+  reaction close-ups (the teller looking photo → hair → photo), quick push-in on the twist line.
+- **Edit:** fast cuts on dialogue, a hard cut or freeze on each reveal, dramatic music stings.
+- **Places:** traffic stop at the driver's window, bank teller window, motel door, crash scene at night,
+  hospital waiting room, reunion banquet hall, elevator, church.
+- **People:** every character has a sheet and a Soul ID. The lead's hair must read on a phone screen
+  (thin edges under a headband, a see-through crown, or full natural hair in shape A).
+- Here the "Never" list above doesn't apply to light or a cinematic feel; it still applies to acting.
