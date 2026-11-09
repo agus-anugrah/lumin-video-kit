@@ -22,6 +22,23 @@ Nothing is "done" until each line below has been checked and written in `<job>/r
 5. **Sync**: B-roll never starts before the word it shows; captions match the audio.
 6. **Music**: vocals check passed; music ends cleanly (fade, no cut-off note).
 
+## The strategists' 12 editor rules (from Lumin's script docs; all must pass)
+1. The hook is visually impactful (no boring or dull hooks).
+2. Captions have zero grammar, spelling or punctuation errors.
+3. Visuals always follow and reinforce every caption / voice line.
+4. The voiceover is consistent in tone, pacing and volume throughout.
+5. All text and key visuals stay fully inside safe zones.
+6. All visuals are high quality (no blurred copied videos).
+7. All videos are unique (no copying).
+8. The product stays clearly visible and is never repeatedly blocked by captions or overlays.
+9. The audio mix is clean and balanced (no harsh peaks, music never overpowers the VO).
+10. CTA, offer and end frame are correct, clear and match the brief exactly.
+11. Every scene holds long enough for captions and visuals to be read without rush.
+12. Key claims, benefits and moments from the brief are all included accurately.
+
+If a rule can't be followed because of the concept style, write why in `job.md` (the strategists ask
+for that note). Then run `sell-check` lines 13–15.
+
 ## Deliver
 - Specs: `presets/export.json`. Name files with the ad code (`VS-312-A.mp4`), no "final", "v2-new".
 - Ask before overwriting any file.

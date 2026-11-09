@@ -16,6 +16,11 @@ Get, or pick a sensible default and say it in one line:
 - **Who is on screen**: default to the preset's default woman. If the ad already has a character,
   ask for a frame of her (or the clip) and use it as the reference.
 
+Read `playbook/what-sells.md` ("Why the six bad ads failed") once per session. B-roll must show **her**
+story beat, not just the word: on "I tried everything" show her bathroom shelf of oils, not a random
+jar. If the ad has a protagonist, every shot of a woman is her (her Soul ID / reference frame), the
+same age and look as the brief.
+
 Turn each line into shots of 2–3 s (first 60 s of an ad) or up to 4 s (after that).
 Each shot = one simple action a phone camera could catch. Not a story in one clip.
 
@@ -76,6 +81,7 @@ Reject if any of these:
 - **Product**: bottle shape, colour or label not matching `references/product/`; any made-up text.
 - **Look**: anything on `presets/never.md` (cinematic grade, studio light, perfect framing, stock
   photo smile, etc.).
-- **Fake proof**: anything that shows hair improving or a result (rule 2 in CLAUDE.md).
+- **Fake proof**: anything that shows hair improving or a result (rule 3 in CLAUDE.md).
+- **Wrong person**: not the ad's protagonist when it should be her; wrong age for the brief; glam model look.
 
 Write the reason for every rejection in `job.md`; it's how the presets get better.

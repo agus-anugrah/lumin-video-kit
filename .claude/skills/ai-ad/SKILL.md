@@ -7,6 +7,11 @@ description: Turn a Lumin ad script (and brief) into a full AI-generated ad draf
 
 Script in, first cut out. Four stops where a person decides; everything between them runs on its own.
 
+The goal is an ad that **sells**, not just a fast one. Read `playbook/what-sells.md` before planning:
+it holds the winning structure, the hook patterns, the numbers, and why the team's earlier AI remakes
+failed (different women in every shot, fake before/afters, wrong age, glossy look). Run the `sell-check`
+skill at the plan and at the end.
+
 ```
 brief + script ─► 1 plan ─► STOP ─► 2 voiceover ─► STOP ─► 3 sheets ─► STOP ─► 4 storyboard
    ─► STOP ─► 5 clips ─► 6 sound + captions ─► 7 assemble ─► 8 review
@@ -27,9 +32,16 @@ Read the brief and script. Write into `job.md`:
   graphic / real UGC needed), place. Mark any line that needs **real proof** (before/after, results,
   testimonials) as "REAL UGC NEEDED"; never generate it.
 - **Never-show list** for this ad (from `presets/never.md` plus anything in the brief).
+- **Protagonist**: the one woman whose story it is (age, look, hair situation, home). Every "I" shot is her.
+- **Beat map**: tag each script line with its beat from the playbook structure (hook, failed products,
+  hiding, discovery, authority, mechanism, product, timeline, proof, guarantee, offer). The visual for a
+  line comes from its beat and her story, not from the single word being said.
 - **Credit estimate** for the whole run (`higgsfield generate cost ...` per model, or Weave quotes).
 
-**Stop:** show the plan and the estimate. Wait for "go" or changes.
+Run `sell-check` on the script. If there's no script yet, draft one in the playbook structure with 3 hook
+options for the strategist to approve; never generate from an unapproved script.
+
+**Stop:** show the plan, the sell-check table and the estimate. Wait for "go" or changes.
 
 ## 2. Voiceover
 
@@ -43,9 +55,10 @@ If the script has a talking head, the VO file is also the lip-sync audio for See
 ## 3. Sheets (who and what stays the same)
 
 For each cast member: one **character sheet** (front, three-quarter, profile, full body, hair close-up
-showing her actual hair situation) in the preset's look, on a plain background, no text. If she appears
-in more than 3 shots, train a Soul ID from the approved sheet (`higgsfield soul-id ...`) and use it for
-every still of her.
+showing her actual hair situation) in the preset's look, on a plain background, no text. **The protagonist always gets a Soul ID**
+(`higgsfield soul-id ...`) trained from her approved sheet, and every still of her uses it. Supporting
+people who appear more than twice get one too. Keep her age, skin tone, face and hair situation
+identical across the whole ad; only the story moment changes.
 
 Product: the bottle comes from `references/product/` (real photos), never generated from words. Use
 `higgsfield product-photoshoot` when a clean product still in a new setting is needed.
@@ -64,6 +77,8 @@ loved style frames), generate 2 options, check them, keep the best. Save as
 publish a storyboard page as an Artifact (grid of stills with captions) so Salam can comment on it,
 and also write `review/storyboard.md`.
 
+Check every frame for the protagonist's face against her sheet (a different face is a fail, even if the
+image is pretty), age and look against the brief, and the playbook's "why the bad ads failed" list.
 Fix failing frames yourself (max 2 retries each), flag what still fails.
 
 **Stop:** "Storyboard ready." Show the summary table (scene, secs, shot, QA result, retries) and ask
@@ -98,5 +113,10 @@ Cut on the VO: a scene starts on its first word, never before. Then:
 
 ## 8. Review
 
-Load the `finish` skill: loudness, frame check, safe zones, never-list, then the hand-over message
-with what's done, what's flagged, and credits spent.
+Run `sell-check` on the finished ad, then the `finish` skill: loudness, frame check, safe zones,
+never-list, the strategists' 12 editor rules, then the hand-over message with what's done, what's
+flagged, and credits spent.
+
+## Warm-traffic (sale) ads
+Short version of the same flow: hook = the offer, 15–70 s, the real bottle on screen early and at the CTA,
+urgency (ends at midnight, sells out), a 2-line story from the protagonist, guarantee, "tap below".

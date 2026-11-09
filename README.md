@@ -45,7 +45,8 @@ Claude always tells you the credit cost and waits for "go" before generating.
 | Path | What it is |
 |---|---|
 | `CLAUDE.md` | Claude's rules for Lumin (product, no fake proof, real bottle only, ask before spending) |
-| `.claude/skills/` | One skill per stage: `ai-ad`, `broll`, `rough-cut`, `voice-music`, `captions`, `graphics`, `premiere`, `finish` |
+| `.claude/skills/` | One skill per stage: `ai-ad`, `broll`, `rough-cut`, `voice-music`, `captions`, `graphics`, `premiere`, `finish`, plus `sell-check` |
+| `playbook/what-sells.md` | What Lumin's winning ads do, the numbers, and why the flops flopped. Claude reads it before every ad |
 | `scripts/` | Transcribe, cut list, captions, XML for Premiere, render, loudness, vocals check, frames, setup, doctor |
 | `presets/` | Looks (`ugc-iphone`, `realistic-drama`, `ancient-story`, `3d-animated`), never-list, captions, graphics, audio and export specs. Salam owns these |
 | `references/` | Real product photos and Salam's loved/hated examples |

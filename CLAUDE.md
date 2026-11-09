@@ -29,11 +29,16 @@ Lumin codes: BP = big project (new production) in **VS** (short, 9:16), **VM** (
    pick the job up from it alone.
 2. **Never touch source files.** Refer to the editor's footage by full path. Never move, rename,
    re-encode over or delete it.
-3. **No fake proof.** Never generate before/after, regrowth, "results", a hairline that fills in, or
-   anything showing the product working. Proof comes from real customer footage only. Mark such lines
-   "REAL UGC NEEDED" and move on.
+3. **No fake proof.** Never generate photoreal before/after, regrowth, "results", a hairline that fills
+   in, or anything showing the product working. Proof comes from real customer footage only. Mark such
+   lines "REAL UGC NEEDED" and move on. Only exception: in a clearly animated (cartoon) story, the
+   character's own arc may end with fuller hair, with the strategist's OK.
+3b. **One protagonist.** A first-person ad has one woman, locked with a Soul ID, the same face, age and
+   look in every shot. A different face is a failed shot. (The team's AI remakes flopped mainly on this.)
 4. **The bottle is never invented.** Product shots use the real photos in `references/product/`.
    Folder empty = no product shots, say so. No generated label text.
+4b. **Make it sell, not just fast.** Read `playbook/what-sells.md` before planning any ad and run the
+   `sell-check` skill at the plan and before delivery.
 5. **Taste lives in the presets.** Read `presets/never.md`, the chosen preset and `rules.md` before
    writing any prompt. One preset and one cast per ad.
 6. **Still first, then video.** Approve the still before spending on a clip.
@@ -57,6 +62,7 @@ Lumin codes: BP = big project (new production) in **VS** (short, 9:16), **VM** (
 
 | Stage | Skill | What happens |
 |---|---|---|
+| Will it sell? (plan + final) | `sell-check` | score script, storyboard and ad against `playbook/what-sells.md` |
 | Whole AI ad from a script | `ai-ad` | plan → VO → sheets → storyboard → clips → sound/captions → assembled draft |
 | Single shots / B-roll gaps | `broll` | shot plan → stills → pick → clip |
 | Real footage | `rough-cut` | transcribe → cut pauses, fillers, retakes → timeline |

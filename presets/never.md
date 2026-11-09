@@ -5,9 +5,25 @@
 ## Never (claims and compliance)
 - Before/after, regrowth over time, "results", a hairline that fills in, a fuller version of the
   same woman. Proof only comes from real customers.
-- Doctors in white coats, hospitals, prescriptions, or anything that looks like a medical treatment.
+- An AI-generated person presented as a real licensed doctor (white coat + "Dr." + "board-certified").
+  Authority works (the winning scripts use a Black trichologist), but a made-up licensed doctor is a
+  Meta and FTC risk: flag it for the strategist, prefer a real expert, a hairstylist, or the trichologist
+  only mentioned in the story.
+- Hospitals, prescriptions, injections shown as if the product were a treatment.
 - Fake text: labels, captions, screens, packaging that isn't from `references/product/`.
 - Real brand logos (competitor products, Amazon boxes) unless the editor supplies the real footage.
+
+## Never (learned from ads that flopped, 2026-11-09)
+- A different woman in each shot of a first-person story. One protagonist, same face, start to end.
+- A "before" and an "after" that are two different people.
+- Women who don't match the hook or brief: 20-somethings for a 50+ hook, glam models, red-carpet makeup,
+  long straight lace wigs as the "result". Men, unless the brief is a men's ad.
+- Hotel lobbies, studio portraits, event dinners, cinematic sets when the story is at home.
+- B-roll that only illustrates the single word (a rosemary jar on "try this") instead of her moment.
+- Low-resolution or scraped clips from other creators; anything below 1080 px wide in the final.
+- Competitor products (Mielle, Kirkland minoxidil…) on screen except briefly with a red ✗ in the
+  "everything failed" beat.
+- A static or generic first frame. The first frame is the hook's moment, with hook text.
 
 ## Never (look)
 - Cinematic colour grade, teal/orange, film look, glossy ad lighting, studio backdrops.
