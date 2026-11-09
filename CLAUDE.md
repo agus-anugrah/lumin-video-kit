@@ -80,6 +80,7 @@ Load the stage's skill before starting that stage.
 
 | Need | Use |
 |---|---|
+| The editor's batches (Lumin app) | `python3 scripts/lumin_batch.py mine` / `get <code>` (brief + script tab → job folder) / `broll <words>` / `broll-get <id> --out <dir>`. Read-only, the editor's own app login. Not signed in → tell them to run `python3 scripts/lumin_batch.py login` in their own terminal; never ask for or type their password. |
 | New job / resume | `python3 scripts/new_job.py`, then the job's `job.md` |
 | Stills and clips | **Higgsfield CLI** (`higgsfield model list`, `model get <id> --json`, `generate cost`, `generate create`, `soul-id`, `product-photoshoot`) and Higgsfield's own `higgsfield-generate` skill for exact flags. Don't guess flags; run `--help`. |
 | Models | Stills: Nano Banana Pro / 2, Seedream, GPT Image, Soul (+ Soul ID). Clips: Kling 4.0 (B-roll), Seedance 2.5 (talking heads, VO as audio for lip sync), Veo. |

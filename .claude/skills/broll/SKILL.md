@@ -33,7 +33,8 @@ Create the job (or reuse the ad's existing job): `python3 scripts/new_job.py "<n
 Fill the header and the Shots table in its `job.md`.
 
 Before generating anything, look for a clip we already have: earlier jobs' `clips/` folders and the
-Lumin app's B-roll library. Reuse first, generate only what's missing.
+Lumin app's B-roll library (`python3 scripts/lumin_batch.py broll <words>`, e.g. `broll scalp edges`,
+then `broll-get <id> --out <job>/source`). Reuse first, generate only what's missing.
 
 Show the table, the image model and video model you will use, how many outputs (default 3 stills
 per shot, 1 video per picked still), and the credit balance. **Wait for "go".**

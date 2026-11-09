@@ -33,6 +33,7 @@ found() { ls -d "$HOME/.claude/skills/$1" ".claude/skills/$1" "$HOME/.agents/ski
 found higgsfield-generate && good "Higgsfield skills" || bad "Higgsfield skills" "npx skills add higgsfield-ai/skills"
 found text-to-speech      && good "ElevenLabs skills" || info "ElevenLabs skills not found (npx skills add elevenlabs/skills)"
 found hyperframes         && good "HyperFrames skills" || info "HyperFrames skills not found (npx hyperframes skills update)"
+[ -f "$HOME/.lumin-kit/session.json" ] && good "Lumin app login (your batches)" || bad "Lumin app login" "python3 scripts/lumin_batch.py login  (in your own terminal)"
 [ -f "$HOME/.elevenlabs/.env" ] && good "ElevenLabs key" || info "no ElevenLabs key yet (only needed for SFX, music, voice changer)"
 
 n=$(find references/product -type f ! -name '.*' 2>/dev/null | wc -l | tr -d ' ')

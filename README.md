@@ -21,11 +21,17 @@ ElevenLabs for voice, sound and music, HyperFrames for graphics, and Premiere Pr
 4. In claude.ai → Settings → Connectors, connect **ElevenLabs** and **Figma** with the Lumin accounts.
 5. **Premiere editors**: restart Premiere, open a project, then Window → Extensions →
    **MCP Bridge (CEP)** → Start Bridge.
-6. Open this folder in Claude Code and say: **"Run the doctor and tell me what's missing."**
+6. Connect your Lumin app account (once, in your own terminal, same login as the app):
+   `python3 scripts/lumin_batch.py login`
+7. Open this folder in Claude Code and say: **"Run the doctor and tell me what's missing."**
 
 ## Using it
 
 Talk normally. Examples:
+
+> Show my batches.
+
+> Make batch 3946.
 
 > Make the ad for VS batch 312. Brief: personal story, church wig moment, 9:16, 35 seconds.
 > Script: (paste)

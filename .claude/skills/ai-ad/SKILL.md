@@ -17,8 +17,12 @@ brief + script ─► 1 plan ─► STOP ─► 2 voiceover ─► STOP ─► 3
    ─► STOP ─► 5 clips ─► 6 sound + captions ─► 7 assemble ─► 8 review
 ```
 
-Start: `python3 scripts/new_job.py "<ad code or name>" --editor <name> --batch "<batch>"`. Everything for
-this ad lives in that job folder; keep `job.md` current after every step.
+Start from the batch in the Lumin app when there is one: `python3 scripts/lumin_batch.py get <code>`
+(or part of its name). It creates the job folder with `brief.md` (angle, awareness, funnel, audience,
+format, hooks, files) and `script.txt` (the batch's own script tab). Read both before planning. The
+brief and script from the strategist win over the playbook; the playbook fills gaps and powers the
+sell check. No batch: `python3 scripts/new_job.py "<ad code or name>" --editor <name>` and ask for the
+script. Everything for this ad lives in that job folder; keep `job.md` current after every step.
 
 ## 1. Plan
 

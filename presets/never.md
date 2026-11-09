@@ -22,7 +22,8 @@
   long straight lace wigs as the "result". Men, unless the brief is a men's ad.
 - Hotel lobbies, studio portraits, event dinners, cinematic sets when the story is at home.
 - B-roll that only illustrates the single word (a rosemary jar on "try this") instead of her moment.
-- Low-resolution or scraped clips from other creators; anything below 1080 px wide in the final.
+- Low-resolution or scraped clips from other creators (the flop was 360x450, blurry and stitched from
+  other people's videos). The team's own B-roll library (mostly 576x1024) is fine; render finals at 1080 wide.
 - Competitor products (Mielle, Kirkland minoxidil…) on screen except briefly with a red ✗ in the
   "everything failed" beat.
 - A static or generic first frame. The first frame is the hook's moment, with hook text.
