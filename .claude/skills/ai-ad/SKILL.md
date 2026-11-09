@@ -33,6 +33,10 @@ Read the brief and script. Write into `job.md`:
   testimonials) as "REAL UGC NEEDED"; never generate it.
 - **Never-show list** for this ad (from `presets/never.md` plus anything in the brief).
 - **Protagonist**: the one woman whose story it is (age, look, hair situation, home). Every "I" shot is her.
+- **Real or AI per line**: trust beats (hook problem shot, hiding, scalp close-ups, "me now", proof)
+  are REAL NEEDED first: search the Lumin B-roll library and creator footage before planning AI. AI covers
+  animation, mechanism, product (from real photos), places, props and filler. For a fully AI ad, prefer
+  the animated drama format (it's clearly fiction and has the account's best hold).
 - **Beat map**: tag each script line with its beat from the playbook structure (hook, failed products,
   hiding, discovery, authority, mechanism, product, timeline, proof, guarantee, offer). The visual for a
   line comes from its beat and her story, not from the single word being said.

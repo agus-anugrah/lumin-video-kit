@@ -33,8 +33,10 @@ Lumin codes: BP = big project (new production) in **VS** (short, 9:16), **VM** (
    in, or anything showing the product working. Proof comes from real customer footage only. Mark such
    lines "REAL UGC NEEDED" and move on. Only exception: in a clearly animated (cartoon) story, the
    character's own arc may end with fuller hair, with the strategist's OK.
-3b. **One protagonist.** A first-person ad has one woman, locked with a Soul ID, the same face, age and
-   look in every shot. A different face is a failed shot. (The team's AI remakes flopped mainly on this.)
+3b. **Real footage for trust, AI for the rest.** Profitable Lumin ads use real footage for the hook
+   problem shot, the hiding, scalp close-ups and proof; AI-realistic versions got clicks and lost money.
+   Use AI for animation (the animated drama format), mechanism, product shots from real photos, places
+   and filler. A photoreal AI "I" speaker is one woman locked with a Soul ID, the same face throughout.
 4. **The bottle is never invented.** Product shots use the real photos in `references/product/`.
    Folder empty = no product shots, say so. No generated label text.
 4b. **Make it sell, not just fast.** Read `playbook/what-sells.md` before planning any ad and run the

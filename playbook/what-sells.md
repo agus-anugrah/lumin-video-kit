@@ -1,7 +1,7 @@
 # What sells for Lumin
 
 Built 2026-11-09 from the Lumin app's Meta data (account since 2025-07-01), the winning scripts in
-Drive, and a frame-by-frame look at six ads the team called bad. Numbers are Meta-reported (ROAS =
+Drive, a frame-by-frame look at the top ads (Meta previews) and at six ads the team called bad. Numbers are Meta-reported (ROAS =
 purchase value ÷ spend, CPA = spend ÷ purchases, hook = 3-second views ÷ impressions, hold =
 ThruPlays ÷ impressions). Use them to compare ads with each other, not as profit.
 
@@ -19,6 +19,38 @@ An ad that beats those is above average.
 | Sale / offer, 15–70 s | Biggest sale of the year, Sale ends soon, "We lied to you" | 20–30% | 7–14% | 1.15–1.32 | $40–48 | Warm traffic / retargeting. Best return |
 | Statics | Static batch 25, Design 1, native statics | — | — | 1.26–1.46 | $39–46 | Best return of all |
 | Objection | "Too expensive" | 37% | 14% | 1.07 | $54 | Warm traffic |
+
+**"Winner" in the app means it spent a lot, not that it made money.** Rank by ROAS and CPA with a spend
+floor. Profitable ads (ROAS ≥ 1.0 on $30k+): Salam Batch 79 VSL 1.28 · Batch 84 remake VSL 1.06 ·
+Simon Batch 260 1.06–1.12 · Simon Batch 8 variants 1.11–1.15 · sale ads 1.15–1.32 · statics 1.26–1.46.
+Big spenders that lose money: Walked Into Church v2 0.75 (0.64 lately) · Winning VSL v2 0.67 ·
+50,000 Women 0.82.
+
+## What the profitable ads look like (seen frame by frame)
+
+They are made of **real footage**, even when several different women appear:
+- **Salam Batch 79 VSL** (ROAS 1.28, hook 65%, hold 32%, the best story ad): opens on a real woman
+  crying at home, filmed on her phone: "I started losing my hair about 4 months after I gave birth."
+  Then a real bald patch, real scalp-camera (trichoscope) footage, real hands in natural hair, and a
+  simple 3D follicle animation for the mechanism.
+- **Batch 84 remake VSL** ($147k, ROAS 1.06): hook frame is an extreme close-up of a real thinning
+  scalp parted by her fingers, hook text "I'm a 47 year old black woman who went from hiding my scalp".
+  Real nurse filming herself in a hospital hallway, real dermatologist clips for the "humiliation of
+  going to dermatologists" beat, a real woman taking the capsule, a real scalp close-up under the
+  guarantee line.
+- **Sale ad, Batch #65** (ROAS 1.17–1.30): the real bottle in frame 1 with capsules, a "SAVE 60% OFF"
+  banner on screen the whole time, the hook as a comment-reply sticker ("Reply to Samantha's comment:
+  Lumin is running the BIGGEST summer sale in history"), a real warehouse packing shot (sells-out
+  proof), a real older woman in pajamas, a real scalp, then the bottle in hand with a 90-day guarantee
+  badge and cash.
+
+The AI-realistic story ads (Walked Into Church v2: AI bald woman in a hotel lobby, a different AI woman
+in nearly every shot) get **attention** (hook 48%, CTR 7.7%) but **lose money** (ROAS 0.64–0.75). The
+six "bad" ads are close relatives of those.
+
+**Working theory** (test it, don't treat it as law): AI-realistic people buy the click but cost trust at
+the purchase. Real, raw footage of real hair loss is what sells. One caveat: the real-footage winners
+are older (Jan–Mar 2026) and the whole account has slowed since, so part of the gap may be fatigue.
 
 What this means for anything the kit makes:
 - **Cold traffic is won with a story** (high hook and hold), then the story has to convert. Long is fine;
@@ -74,8 +106,11 @@ midnight, 60% off + free shipping) → a 2-line transformation story → guarant
 They used **the same winning scripts** (church, stay bald, 50,000 women, 47-year-old) with new visuals.
 So the script wasn't the problem. The pictures broke the trust the words were building.
 
-1. **No single "her".** The voice says "I", but the screen shows 5–10 different women, and AI faces
-   drift between shots. The viewer can't follow one person's story, so she stops believing it.
+1. **AI-realistic people in the trust beats.** The hook problem shot, the hiding, the "me now" and the
+   proof were AI faces. Profitable ads use real women and real scalps exactly there.
+1b. **The "I" changes face.** Several real women as B-roll is fine (the winners do it under a narrator),
+   but when the speaker looks into the camera as "me", AI faces drift from shot to shot and the story
+   stops being believable.
 2. **Before and after are two different people.** A thinning woman praying in church, then a different
    woman with a full natural afro saying "at 55 in just 6 weeks". Viewers spot it, it reads as fake,
    and it's a policy risk.
@@ -96,9 +131,14 @@ So the script wasn't the problem. The pictures broke the trust the words were bu
 
 ## The rules the kit follows because of this
 
-- **One protagonist, locked.** Every ad with a first-person narrator has one woman. Make her character
-  sheet first, train a Soul ID, and use it for every shot of her. Check her face in every still and clip
-  against the sheet. A different face = reject.
+- **Real first for trust beats.** Hook problem shot, the hiding, scalp and hairline close-ups,
+  testimonials, before/after and "me now" come from real footage: the Lumin B-roll library, creator
+  videos from the UGC tracker, customer content the strategist supplies. Mark them REAL NEEDED.
+- **AI where AI is strong**: animated drama VSLs (clearly fiction, highest hold in the account),
+  mechanism animations (follicles, inflammation), product shots built from the real bottle photos,
+  ingredient shots, places and props, and filler B-roll for non-trust beats.
+- **If a photoreal AI person speaks as "I"**, she is one woman locked with a Soul ID, the same face in
+  every shot; a different face = reject. Real B-roll of other women under the narrator is fine.
 - **Age and look match the hook and the brief**: 40–60 by default, real, not glam.
 - **The visual follows the story, not the word.** Plan visuals per beat of the structure above (hiding,
   failed products, discovery, mechanism, timeline), then cut on the words.
@@ -106,7 +146,8 @@ So the script wasn't the problem. The pictures broke the trust the words were bu
   supplies them). In a clearly animated story, the character's own arc can end with fuller hair if the
   strategist approves; never photoreal.
 - **First frame = the most specific, emotional moment of the hook**, with hook text on screen.
-- **Warm-traffic ads lead with the offer and the real bottle.**
+- **Warm-traffic ads lead with the offer and the real bottle**: offer banner on screen the whole time,
+  comment-reply sticker hooks, a real "sells out" moment (warehouse, packing), guarantee badge at the CTA.
 - **The strategists' 12 editor rules** (in the finish skill) are a gate, not a suggestion.
 
 ## How to refresh (Supabase, Lumin app project)

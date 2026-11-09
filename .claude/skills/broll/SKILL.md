@@ -21,6 +21,9 @@ story beat, not just the word: on "I tried everything" show her bathroom shelf o
 jar. If the ad has a protagonist, every shot of a woman is her (her Soul ID / reference frame), the
 same age and look as the brief.
 
+Trust beats come from real footage first (B-roll library, creator clips): a real scalp, a real woman's
+tears, a real bottle in a hand. Generate only when nothing real fits, and say so in `job.md`.
+
 Turn each line into shots of 2–3 s (first 60 s of an ad) or up to 4 s (after that).
 Each shot = one simple action a phone camera could catch. Not a story in one clip.
 

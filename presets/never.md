@@ -14,7 +14,9 @@
 - Real brand logos (competitor products, Amazon boxes) unless the editor supplies the real footage.
 
 ## Never (learned from ads that flopped, 2026-11-09)
-- A different woman in each shot of a first-person story. One protagonist, same face, start to end.
+- AI-realistic women in the trust beats (hook problem shot, hiding, scalp close-ups, "me now", proof).
+  The profitable ads use real footage there; the AI-realistic ones get clicks and lose money.
+- An AI "I" speaker whose face changes between shots.
 - A "before" and an "after" that are two different people.
 - Women who don't match the hook or brief: 20-somethings for a 50+ hook, glam models, red-carpet makeup,
   long straight lace wigs as the "result". Men, unless the brief is a men's ad.

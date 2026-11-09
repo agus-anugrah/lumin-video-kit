@@ -25,8 +25,9 @@ delivery until it's fixed or the strategist says to go anyway.
    yourself; list them.
 
 ## Storyboard (before clips are generated)
-7. **One protagonist**: every "her" shot uses the same character sheet / Soul ID. Supporting people only
-   where the script names them.
+7. **Real where it counts**: the hook problem shot, hiding, scalp close-ups, testimonials and any
+   before/after are real footage (or marked REAL NEEDED). AI is used for animation, mechanism, product
+   (from real photos), places and filler. If a photoreal AI woman speaks as "I", it's one Soul ID, one face.
 8. **Visual per story beat**, not per word. Each beat has a clear picture of the moment (her pew at the
    back, the wig on the stand, the shower drain, the sister on a video call).
 9. **First frame** is the most specific emotional moment of the hook, with hook text in the safe zone.
@@ -38,7 +39,7 @@ delivery until it's fixed or the strategist says to go anyway.
 ## Finished ad (before delivery)
 13. The strategists' 12 editor rules in the `finish` skill all pass.
 14. Watch the first 5 seconds as a stranger: would she stop scrolling? Say why in one line.
-15. Watch the transitions between beats: does the same woman's story carry through? Any face change = FIX.
+15. Watch the transitions between beats: does her story carry through? A face change on the "I" speaker = FIX.
 
 ## Output
 A short table (line, result, fix) and one sentence: "Ready", "Ready after these fixes", or "Not ready:
