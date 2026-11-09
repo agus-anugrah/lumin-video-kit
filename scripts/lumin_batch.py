@@ -485,14 +485,29 @@ def run_research(b, job, *, date=None, days=14, top=12, per_brand=2, videos=True
         words = set(re.findall(r"[a-z]+", f"{ad.get('transcript') or ''} {ad.get('body') or ''}".lower()))
         r["on_topic"] = bool(words & topic)
     ranked.sort(key=lambda r: (r["winner"], r["on_topic"], r["score"], r.get("days_running") or 0), reverse=True)
-    picked, per = [], {}
-    for r in ranked:
-        if per.get(r["brand"], 0) >= per_brand:
-            continue
-        picked.append(r)
-        per[r["brand"]] = per.get(r["brand"], 0) + 1
-        if len(picked) >= top:
-            break
+    # Two groups: proven (running over 30 days) and new and scaling (30 days or less, ranked by copies, i.e.
+    # what they're putting money behind right now). Half of the picks each; a group short of ads gives its
+    # places to the other.
+    def new_key(r):
+        return (r["on_topic"], r.get("duplicates") or 0, -(r.get("delivery_rank") or 99))
+    fresh = sorted([r for r in ranked if (r.get("days_running") or 999) <= 30], key=new_key, reverse=True)
+    proven = [r for r in ranked if (r.get("days_running") or 999) > 30]
+
+    def take(pool, n, group):
+        got, per = [], {}
+        for r in pool:
+            if len(got) >= n:
+                break
+            if per.get(r["brand"], 0) >= per_brand:
+                continue
+            got.append({**r, "group": group})
+            per[r["brand"]] = per.get(r["brand"], 0) + 1
+        return got
+    new_picks = take(fresh, top // 2, "new")
+    proven_picks = take(proven, top - len(new_picks), "proven")
+    if len(proven_picks) < top - len(new_picks):
+        new_picks = take(fresh, top - len(proven_picks), "new")
+    picked = proven_picks + new_picks
 
     # Our own top creatives in the 30 days before the date.
     ours = rpc("top_creatives", {"since": str(day - datetime.timedelta(days=30)),
@@ -550,13 +565,18 @@ def run_research(b, job, *, date=None, days=14, top=12, per_brand=2, videos=True
         lines.append("No video creative with $1k+ spend in that window.")
     lines += ["", f"## Competitors' top ads ({window_note})", "",
               f"{len(best)} ads in the window from {len({r['brand'] for r in ranked})} brands; the {len(picked)} "
-              f"strongest (at most {per_brand} a brand) are below. Winner = high in two of the three lists (delivery "
-              "order, longest running, most copies), or 30+ days running with 3+ copies. TrendTrack shows no sales.",
+              f"picked are below (at most {per_brand} a brand per group). **Proven** = running over 30 days, best first. "
+              "**New and scaling** = started in the last 30 days, most copies first: what they're putting money "
+              "behind right now. Winner = high in two of the three lists (delivery order, longest running, most "
+              "copies), or 30+ days running with 3+ copies. TrendTrack shows no sales.",
               ""]
+    headings = {"proven": "### Proven", "new": "### New and scaling"}
     for i, r in enumerate(picked, 1):
         ad = r.get("competitor_ads") or {}
+        if headings.get(r["group"]):
+            lines += [headings.pop(r["group"]), ""]
         where = ", ".join(f"{LIST_NAMES[k]} #{r[k]}" for k in LIST_SIZES if r.get(k))
-        lines += [f"### {i}. {r['brand']}{' · WINNER' if r['winner'] else ''}{' · on topic' if r['on_topic'] else ''}",
+        lines += [f"#### {i}. {r['brand']}{' · WINNER' if r['winner'] else ''}{' · on topic' if r['on_topic'] else ''}",
                   f"- {r.get('days_running') or '?'} days running · {r.get('duplicates') or 0} copies · {where} · "
                   f"page: {ad.get('advertiser') or '—'} · seen {r['day']}",
                   f"- Offer: {ad.get('offer') or '—'} · CTA: {ad.get('call_to_action') or '—'} · "
