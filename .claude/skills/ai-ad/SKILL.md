@@ -15,16 +15,24 @@ failed (different women in every shot, fake before/afters, wrong age, glossy loo
 plan and at the end.
 
 ```
-brief + script ─► 1 plan ─► STOP ─► 2 voiceover ─► STOP ─► 3 sheets ─► STOP ─► 4 storyboard
+brief + script ─► 0 research ─► 1 plan ─► STOP ─► 2 voiceover ─► STOP ─► 3 sheets ─► STOP ─► 4 storyboard
    ─► STOP ─► 5 clips ─► 6 sound + captions ─► 7 assemble ─► 8 review
 ```
 
 Start from the batch in the Lumin app when there is one: `python3 scripts/lumin_batch.py get <code>`
 (or part of its name). It creates the job folder with `brief.md` (angle, awareness, funnel, audience,
-format, hooks, files) and `script.txt` (the batch's own script tab). Read both before planning. The
-brief and script from the strategist win over the playbook; the playbook fills gaps and powers the
-sell check. No batch: `python3 scripts/new_job.py "<ad code or name>" --editor <name>` and ask for the
-script. Everything for this ad lives in that job folder; keep `job.md` current after every step.
+format, hooks, files) and `script.txt` (the batch's own script tab), **and runs the research** into
+`research/`. Read all three before planning. The brief and script from the strategist win over the
+playbook and the research; those fill gaps and power the sell check. No batch:
+`python3 scripts/new_job.py "<ad code or name>" --editor <name>` and ask for the script. Everything for
+this ad lives in that job folder; keep `job.md` current after every step.
+
+## 0. Research (automatic, no stop)
+
+Load the `research` skill and follow it: read `research/research.md` (competitors' top ads and ours around the
+batch's date, with frames), then write its **Findings** and **Proposed brief**. Show the editor the 5-line summary
+and go straight on to the plan. If research was skipped or there's no competitor data yet, say so in one line and
+continue.
 
 ## 1. Plan
 
@@ -51,6 +59,8 @@ Read the brief and script. Write into `job.md`:
   sell check.
 - **Hooks**: the beat maps show Meta always spent on the bluntest hook (who shamed her, what they said
   about her hair, who watched). If all of the script's hooks are soft, propose one blunt rewrite.
+- **From the research**: which competitor winners this ad borrows a pattern from, and the research's
+  hooks or fixes worth adding (as suggestions when the strategist's script exists).
 - **Credit estimate** for the whole run (`higgsfield generate cost ...` per model, or Weave quotes).
 
 Run `sell-check` on the script. If there's no script yet, draft one on the format's beat map with 3 hook

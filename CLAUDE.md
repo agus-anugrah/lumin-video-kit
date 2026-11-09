@@ -70,6 +70,7 @@ Lumin codes: BP = big project (new production) in **VS** (short, 9:16), **VM** (
 
 | Stage | Skill | What happens |
 |---|---|---|
+| What's working now (automatic, before the plan) | `research` | competitors' top ads (TrendTrack, saved daily in the app) + ours around the batch's date → findings + proposed brief |
 | Will it sell? (plan + final) | `sell-check` | score script, storyboard and ad against `playbook/what-sells.md` |
 | Whole AI ad from a script | `ai-ad` | plan → VO → sheets → storyboard → clips → sound/captions → assembled draft |
 | Single shots / B-roll gaps | `broll` | shot plan → stills → pick → clip |
@@ -86,7 +87,7 @@ Load the stage's skill before starting that stage.
 
 | Need | Use |
 |---|---|
-| The editor's batches (Lumin app) | `python3 scripts/lumin_batch.py mine` / `get <code>` (brief + script tab → job folder) / `broll <words>` / `broll-get <id> --out <dir>`. Read-only, the editor's own app login. Not signed in → tell them to run `python3 scripts/lumin_batch.py login` in their own terminal; never ask for or type their password. |
+| The editor's batches (Lumin app) | `python3 scripts/lumin_batch.py mine` / `get <code>` (brief + script tab + research → job folder) / `research <code>` / `broll <words>` / `broll-get <id> --out <dir>`. Read-only, the editor's own app login. Not signed in → tell them to run `python3 scripts/lumin_batch.py login` in their own terminal; never ask for or type their password. |
 | New job / resume | `python3 scripts/new_job.py`, then the job's `job.md` |
 | Stills and clips | **Higgsfield CLI** (`higgsfield model list`, `model get <id> --json`, `generate cost`, `generate create`, `soul-id`, `product-photoshoot`) and Higgsfield's own `higgsfield-generate` skill for exact flags. Don't guess flags; run `--help`. |
 | Models | Stills: Nano Banana Pro / 2, Seedream, GPT Image, Soul (+ Soul ID). Clips: Kling 4.0 (B-roll), Seedance 2.5 (talking heads, VO as audio for lip sync), Veo. |

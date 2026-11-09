@@ -5,7 +5,10 @@
   python3 scripts/lumin_batch.py whoami
   python3 scripts/lumin_batch.py mine [--all]          # your open batches (--all: every stage)
   python3 scripts/lumin_batch.py get 3946              # batch by code (or part of its name): brief, hooks,
-                                                       # script, files -> a job folder; prints its path
+                                                       # script, files -> a job folder; prints its path;
+                                                       # then runs `research` for it (--no-research to skip)
+  python3 scripts/lumin_batch.py research 3946         # competitors' top ads + ours around the batch's date
+                                                       # -> <job>/research/ (research.md, videos, frames)
   python3 scripts/lumin_batch.py broll church wig      # search the app's B-roll library
   python3 scripts/lumin_batch.py broll-get <id> --out jobs/<job>/source   # download one clip
 
@@ -14,6 +17,7 @@ the app. Your password is never stored or shown: the login keeps a session token
 ~/.lumin-kit/session.json (only your user can read it). `logout` deletes it.
 """
 import argparse
+import datetime
 import getpass
 import json
 import os
@@ -318,6 +322,11 @@ def cmd_get(args):
           f" · strategist {who.get(b['strategist_id'], '?')}")
     print(f"brief.md written · {script_note} · {len(hooks)} hook(s) · {len(assets)} file(s)")
     print(f"format family: {family[1]} -> {family[2]}" if family else "format family: unknown, ask the strategist")
+    if not args.no_research:
+        try:
+            run_research(b, job)
+        except (SystemExit, Exception) as failure:  # research must never block getting the batch
+            print(f"research skipped: {failure}. Run `python3 scripts/lumin_batch.py research {b['code']}` later.")
 
 
 def cmd_broll(args):
@@ -361,6 +370,237 @@ def cmd_broll_get(args):
     print(f"{out / name}  ({len(data) / 1e6:.1f} MB)")
 
 
+# ---------- research ----------
+# The app saves the tracked competitors' top video ads from TrendTrack every day (competitor_ads, competitor_ad_days).
+# Research reads those days around the batch's date plus our own top ads, downloads the competitors' videos and pulls
+# frames, and writes <job>/research/research.md for Claude to read before the plan. No TrendTrack credits are used here.
+
+LIST_SIZES = {"delivery_rank": 12, "running_rank": 6, "copies_rank": 6}
+LIST_NAMES = {"delivery_rank": "delivery order", "running_rank": "longest running", "copies_rank": "most copies"}
+MAX_VIDEO_BYTES = 120_000_000
+HAIR_WORDS = ("hair", "edges", "wig", "wigs", "scalp", "bald", "balding", "thinning", "crown", "follicle", "follicles",
+              "shedding", "hairline", "regrow", "regrew", "breakage", "alopecia", "braids", "headband", "batana")
+STOP_WORDS = {"batch", "about", "their", "there", "these", "which", "would", "could", "after", "before", "hooks",
+              "story", "video", "style", "movie", "pixar", "lumin", "women", "woman"}
+
+
+def rpc(fn, body):
+    tok, _ = token()
+    return http("POST", f"{SUPABASE_URL}/rest/v1/rpc/{fn}", body=body, token=tok)
+
+
+def job_folder(b):
+    import subprocess
+    who = names([b["editor_id"]])
+    out = subprocess.run([sys.executable, str(KIT / "scripts" / "new_job.py"), f"{b['code']} {b['name']}",
+                          "--editor", who.get(b["editor_id"], ""), "--batch", f"{b['code']} {b['name']}"],
+                         capture_output=True, text=True, check=True).stdout.strip()
+    return Path(out.splitlines()[-1])
+
+
+def research_date(b, override):
+    today = datetime.date.today()
+    if override:
+        return datetime.date.fromisoformat(override)
+    launch = b.get("launch_date")
+    if launch:
+        day = datetime.date.fromisoformat(str(launch)[:10])
+        return min(day, today)
+    return today
+
+
+def score(row):
+    """0-3: how high the ad sat in each of the day's three lists. Winner = in two lists, or long-running with copies."""
+    total, lists = 0.0, 0
+    for key, size in LIST_SIZES.items():
+        rank = row.get(key)
+        if rank:
+            total += (size + 1 - rank) / size
+            lists += 1
+    winner = lists >= 2 or ((row.get("days_running") or 0) >= 30 and (row.get("duplicates") or 0) >= 3)
+    return round(total, 2), lists, winner
+
+
+def first_words(text, n=45):
+    words = (text or "").split()
+    return " ".join(words[:n]) + (" …" if len(words) > n else "")
+
+
+def download(url, dest):
+    if dest.exists() and dest.stat().st_size > 0:
+        return True
+    req = urllib.request.Request(url, headers={"User-Agent": "lumin-video-kit/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=180) as r:
+            size = int(r.headers.get("Content-Length") or 0)
+            if size > MAX_VIDEO_BYTES:
+                return False
+            dest.write_bytes(r.read(MAX_VIDEO_BYTES + 1))
+        return dest.stat().st_size <= MAX_VIDEO_BYTES
+    except (urllib.error.URLError, TimeoutError, OSError):
+        return False
+
+
+def run_research(b, job, *, date=None, days=14, top=12, per_brand=2, videos=True, refresh=False):
+    out = job / "research"
+    md = out / "research.md"
+    if md.exists() and not refresh and time.time() - md.stat().st_mtime < 3 * 86400:
+        print(f"research: already done {time.strftime('%Y-%m-%d', time.localtime(md.stat().st_mtime))} -> {md} "
+              "(--refresh to redo)")
+        return md
+    out.mkdir(parents=True, exist_ok=True)
+    day = research_date(b, date)
+    since = day - datetime.timedelta(days=days)
+
+    cols = ("day,ad_id,delivery_rank,running_rank,copies_rank,days_running,duplicates,"
+            "competitor_ads(domain,advertiser,first_seen_at,video_url,thumbnail_url,body,transcript,"
+            "call_to_action,offer,landing_page,countries),competitors(name)")
+    rows = rest("competitor_ad_days", {"select": cols, "day": [f"gte.{since}", f"lte.{day}"],
+                                       "order": "day.desc", "limit": "5000"})
+    window_note = f"{since} to {day}"
+    if not rows:
+        latest = rest("competitor_ad_days", {"select": "day", "order": "day.desc", "limit": "1"})
+        if latest:
+            last = latest[0]["day"]
+            rows = rest("competitor_ad_days", {"select": cols, "day": f"eq.{last}", "limit": "5000"})
+            window_note = f"no pulls between {since} and {day}; using the nearest pull, {last}"
+        else:
+            window_note = "no competitor ads saved in the app yet (the daily TrendTrack pull hasn't run)"
+
+    # Each ad's most recent day in the window.
+    best = {}
+    for r in rows:
+        if r["ad_id"] not in best:
+            best[r["ad_id"]] = r
+    ranked = []
+    for r in best.values():
+        s, lists, winner = score(r)
+        ranked.append({**r, "score": s, "lists": lists, "winner": winner,
+                       "brand": (r.get("competitors") or {}).get("name") or (r.get("competitor_ads") or {}).get("domain")})
+    # Ads about hair, or about this batch's own words, come first among equals: a lip plumper's winner teaches less.
+    topic = set(HAIR_WORDS) | {w for w in re.findall(r"[a-z]{5,}", " ".join(
+        str(b.get(k) or "") for k in ("name", "brief_angle", "concept", "problems")).lower()) if w not in STOP_WORDS}
+    for r in ranked:
+        ad = r.get("competitor_ads") or {}
+        words = set(re.findall(r"[a-z]+", f"{ad.get('transcript') or ''} {ad.get('body') or ''}".lower()))
+        r["on_topic"] = bool(words & topic)
+    ranked.sort(key=lambda r: (r["winner"], r["on_topic"], r["score"], r.get("days_running") or 0), reverse=True)
+    picked, per = [], {}
+    for r in ranked:
+        if per.get(r["brand"], 0) >= per_brand:
+            continue
+        picked.append(r)
+        per[r["brand"]] = per.get(r["brand"], 0) + 1
+        if len(picked) >= top:
+            break
+
+    # Our own top creatives in the 30 days before the date.
+    ours = rpc("top_creatives", {"since": str(day - datetime.timedelta(days=30)),
+                                 "until": str(day - datetime.timedelta(days=1))}) or []
+    ours = [o for o in ours if (o.get("spend") or 0) >= 1000 and (o.get("video_3s_views") or 0) > 0]
+    by_spend = sorted(ours, key=lambda o: o["spend"], reverse=True)[:8]
+    by_roas = sorted([o for o in ours if o["spend"] >= 2000], key=lambda o: o.get("roas") or 0, reverse=True)[:5]
+
+    # Videos and frames.
+    have_ffmpeg = videos and subprocess_ok(["ffprobe", "-version"])
+    for r in picked:
+        ad = r.get("competitor_ads") or {}
+        r["files"] = {}
+        if not videos or not ad.get("video_url"):
+            continue
+        base = f"{slug(r['brand'])}_{r['ad_id'].split('_')[-1]}"
+        video = out / "videos" / f"{base}.mp4"
+        video.parent.mkdir(exist_ok=True)
+        if download(ad["video_url"], video):
+            r["files"]["video"] = str(video.relative_to(job))
+            if have_ffmpeg:
+                frames = out / "frames" / base
+                if not frames.exists():
+                    subprocess_ok(["bash", str(KIT / "scripts" / "frames.sh"), str(video), str(frames), "6"])
+                if frames.exists():
+                    r["files"]["frames"] = str(frames.relative_to(job))
+
+    (out / "competitor_ads.json").write_text(json.dumps(picked, indent=1, default=str), encoding="utf-8")
+
+    def money(v):
+        return f"${v:,.0f}" if v is not None else "—"
+
+    def pct(v):
+        return f"{float(v) * 100:.0f}%" if v is not None else "—"
+
+    lines = [f"# Research for {b['code']} · {b['name']}",
+             "",
+             f"Made {time.strftime('%Y-%m-%d %H:%M')} for the batch's date {day} "
+             f"({'launch date' if b.get('launch_date') and not date else 'today' if not date else 'given'}). "
+             f"Format: {b.get('format') or '—'} · angle: {b.get('brief_angle') or '—'} · awareness: {b.get('awareness') or '—'}.",
+             "",
+             "Claude: read every ad below (transcript, copy, offer, frames), then fill in **Findings** and "
+             "**Proposed brief** at the bottom before the plan. See the `research` skill.",
+             "",
+             "## Our top ads (30 days before the date)",
+             ""]
+    if by_spend:
+        lines += ["| Creative | Spend | ROAS | Hook | Hold |", "|---|---|---|---|---|"]
+        lines += [f"| {o.get('label') or o.get('batch_name')} | {money(o['spend'])} | {o.get('roas') or 0:.2f} | "
+                  f"{pct(o.get('hook_rate'))} | {pct(o.get('hold_rate'))} |" for o in by_spend]
+        if by_roas:
+            lines += ["", "Best ROAS with $2k+ spend: " + "; ".join(
+                f"{o.get('label') or o.get('batch_name')} ({o.get('roas') or 0:.2f})" for o in by_roas)]
+    else:
+        lines.append("No video creative with $1k+ spend in that window.")
+    lines += ["", f"## Competitors' top ads ({window_note})", "",
+              f"{len(best)} ads in the window from {len({r['brand'] for r in ranked})} brands; the {len(picked)} "
+              f"strongest (at most {per_brand} a brand) are below. Winner = high in two of the three lists (delivery "
+              "order, longest running, most copies), or 30+ days running with 3+ copies. TrendTrack shows no sales.",
+              ""]
+    for i, r in enumerate(picked, 1):
+        ad = r.get("competitor_ads") or {}
+        where = ", ".join(f"{LIST_NAMES[k]} #{r[k]}" for k in LIST_SIZES if r.get(k))
+        lines += [f"### {i}. {r['brand']}{' · WINNER' if r['winner'] else ''}{' · on topic' if r['on_topic'] else ''}",
+                  f"- {r.get('days_running') or '?'} days running · {r.get('duplicates') or 0} copies · {where} · "
+                  f"page: {ad.get('advertiser') or '—'} · seen {r['day']}",
+                  f"- Offer: {ad.get('offer') or '—'} · CTA: {ad.get('call_to_action') or '—'} · "
+                  f"landing page: {ad.get('landing_page') or '—'}"]
+        if r["files"].get("video"):
+            lines.append(f"- Video: `{r['files']['video']}`" + (f" · frames: `{r['files']['frames']}/`"
+                                                               if r["files"].get("frames") else ""))
+        elif ad.get("video_url"):
+            lines.append(f"- Video (not downloaded): {ad['video_url']}")
+        transcript = (ad.get("transcript") or "").strip()
+        lines.append(f"- **Hook:** {first_words(transcript)}" if transcript else
+                     "- **No words in TrendTrack's transcript** (music, a song or silent): watch the frames, or "
+                     "transcribe the video with `scripts/transcribe.py` if it's sung.")
+        if ad.get("body"):
+            lines.append(f"- Copy: {first_words(ad['body'], 40)}")
+        if transcript:
+            lines += ["", "<details><summary>Full transcript</summary>", "", transcript, "", "</details>"]
+        lines.append("")
+    lines += ["## Findings", "", "(Claude fills this in: what's working for them right now, patterns across brands, "
+              "hooks, formats, offers, looks; and what's new compared to our top ads.)", "",
+              "## Proposed brief", "", "(Claude fills this in, using the batch's format beat map: 3 hooks adapted to "
+              "Lumin, the beats, the look, the offer. The strategist's brief and script win over this.)", ""]
+    md.write_text("\n".join(lines), encoding="utf-8")
+    vids = sum(1 for r in picked if r["files"].get("video"))
+    print(f"research: {len(picked)} competitor ads ({sum(r['winner'] for r in picked)} winners, {vids} videos), "
+          f"{len(by_spend)} of our top creatives -> {md}")
+    return md
+
+
+def subprocess_ok(cmd):
+    import subprocess
+    try:
+        return subprocess.run(cmd, capture_output=True, timeout=300).returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+
+
+def cmd_research(args):
+    b = find_batch(args.ref)
+    job = Path(args.job) if args.job else job_folder(b)
+    run_research(b, job, date=args.date, days=args.days, top=args.top, per_brand=args.per_brand,
+                 videos=not args.no_videos, refresh=args.refresh)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -368,7 +608,14 @@ def main():
     sub.add_parser("logout").set_defaults(fn=cmd_logout)
     sub.add_parser("whoami").set_defaults(fn=cmd_whoami)
     p = sub.add_parser("mine"); p.add_argument("--all", action="store_true"); p.set_defaults(fn=cmd_mine)
-    p = sub.add_parser("get"); p.add_argument("ref"); p.set_defaults(fn=cmd_get)
+    p = sub.add_parser("get"); p.add_argument("ref"); p.add_argument("--no-research", action="store_true")
+    p.set_defaults(fn=cmd_get)
+    p = sub.add_parser("research"); p.add_argument("ref"); p.add_argument("--job", help="job folder (default: the batch's)")
+    p.add_argument("--date", help="YYYY-MM-DD to research around (default: launch date, else today)")
+    p.add_argument("--days", type=int, default=14, help="days before the date to look at (default 14)")
+    p.add_argument("--top", type=int, default=12); p.add_argument("--per-brand", type=int, default=2)
+    p.add_argument("--no-videos", action="store_true"); p.add_argument("--refresh", action="store_true")
+    p.set_defaults(fn=cmd_research)
     p = sub.add_parser("broll"); p.add_argument("words", nargs="*"); p.add_argument("--limit", type=int, default=20)
     p.set_defaults(fn=cmd_broll)
     p = sub.add_parser("broll-get"); p.add_argument("id"); p.add_argument("--out", required=True)
