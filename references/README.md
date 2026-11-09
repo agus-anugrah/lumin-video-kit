@@ -1,13 +1,31 @@
 # References
 
 ## product/
-Real photos of the Root Revive bottle and capsules. Needed before any product shot.
-Wanted: bottle front, back, side, top; bottle in a hand; bottle on a bathroom counter; 2 capsules in
-a palm; the capsules close up. Plain light, sharp, label readable. File names say what they show,
-e.g. `bottle_front.jpg`, `capsules_palm.jpg`.
+- `bottle_in-hand_real-photo.jpg`: the **real bottle**, held in a hand. Source of truth for shape, cap,
+  label layout and colours (black label, white "ROOT REVIVE", gold ingredient lines, a beige/tan band
+  at the bottom, ridged silver cap, clear bottle with white capsules).
+- `bottle_front_clean.jpg`: clean front shot on a plain background (the store image). Best reference for
+  label text. Its bottom band is shinier gold than the real bottle's beige band, and it writes
+  "ingredients" in lower case; when they differ, match the real photo.
+
+Label text (exact): Lumin · ROOT REVIVE · BLACK SEED EXTRACT · BAMBOO EXTRACT · PUMPKIN SEED EXTRACT ·
++17 Growth Ingredients · DIETARY SUPPLEMENT · 60 CAPSULES.
+
+Every product shot attaches both images. Never let a model write the label from a prompt; reject any
+still or clip where the label text, colours or bottle shape differ from these.
+
+Still nice to have: back of the bottle, side, top, two capsules in a palm, bottle on a bathroom counter.
 
 ## style/loved/ and style/hated/
-Salam's taste. 20 frames or short clips Salam likes (ideally from our best-spending ads) and 10 Salam
-dislikes (the "AI look" from past Higgsfield attempts). Name each file with what's good or bad
-about it, e.g. `loved_mirror-edges_phone-light.jpg`, `hated_plastic-skin_cinematic.jpg`.
-Claude attaches 1–2 matching loved frames to every still as a style reference.
+Frames from Lumin's own ads (Meta previews, Nov 2026). The file name says the ad, its ROAS and what the
+frame shows. These are small screenshots (about 147x182, with the player bar), so use them as
+**direction for the look and the shot**, not as image references for generation.
+
+- **loved/**: the profitable ads (Batch 79 VSL ROAS 1.28, Batch 84 remake 1.06, Sale #65 1.17). Real,
+  raw footage: real scalps and edges, scalp camera, real women at home, a real bottle in a real place,
+  black-on-white caption boxes, simple 3D for the mechanism.
+- **hated/**: the AI-realistic ads that lost money (Church v2 ROAS 0.64) and the six flops (contact
+  sheets): glossy AI women, a different face in every shot, before/after as two people, 20-somethings
+  for a 50+ hook, men, scraped low-res clips, tiny captions.
+
+Read `playbook/what-sells.md` for the full story behind them.

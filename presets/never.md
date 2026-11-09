@@ -1,6 +1,7 @@
 # Never
 
-> DRAFT by Claude, 2026-11-07. Salam owns this list. Add one line per rule with date and who.
+> Built from Lumin's flops and profitable ads (2026-11-09). Salam owns this list; add a line with date
+> and who for any change.
 
 ## Never (claims and compliance)
 - Before/after, regrowth over time, "results", a hairline that fills in, a fuller version of the

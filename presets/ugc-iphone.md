@@ -1,7 +1,10 @@
 # Preset: UGC iPhone (default)
 
-> DRAFT by Claude, 2026-11-07. Salam to review and correct using the loved/hated examples in
-> `references/style/`. Until then, treat it as a starting point.
+> Based on Lumin's profitable ads (Batch 79, Batch 84 remake, Sale #65; see `references/style/loved/`)
+> and the flops (`hated/`), 2026-11-09. Salam can still correct it; add the change to `rules.md`.
+
+Use it for AI stills and clips that sit **between** real footage: places, props, filler, the moments
+no real clip covers. Trust beats (the problem shot, scalp close-ups, proof) come from real footage first.
 
 Looks like a real woman filmed it on her phone at home. Not an ad, not a film.
 
@@ -19,7 +22,7 @@ Whatever the room has: window daylight, bathroom vanity bulbs, warm lamp at nigh
 No rim light, no studio softbox, no golden-hour glow unless the scene is outside at that time.
 
 ## Person (default when the ad has no character yet)
-Black woman, 40–55, natural build, real skin texture (pores, small marks), no heavy makeup,
+Black woman, 45–60 (the winners' women look 45–60), natural build, real skin texture (pores, small marks), no heavy makeup,
 everyday clothes (t-shirt, robe, bonnet or headscarf at home, church outfit for church scenes).
 Hair matches the scene: thinning edges, traction areas at the temples, a wig, braids, a bonnet,
 a relaxed bob. Expressions are small and real (tired, worried, embarrassed, relieved), never a

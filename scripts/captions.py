@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Captions from a word-level transcript, split by meaning into short cards.
 
-Rules (see presets/captions.md): 1-4 words per card, at most ~22 characters, break at punctuation
-and pauses, never end a card on a small word (a, the, to, my...), never split a number from its unit.
+Rules (see presets/captions.md): split by meaning, break at punctuation and pauses, never end a card on
+a small word (a, the, to, my...), never split a number from its unit.
+Default style "box" = Lumin's winners: black text on a white box, up to ~7 words / 2 lines per card.
+Style "outline" = white text, black outline, spoken word in yellow, 1-4 words per card.
 
 Usage:
   python3 scripts/captions.py jobs/<job>/transcript/words.json --out jobs/<job>/captions/captions \
       [--cutlist jobs/<job>/cuts/cutlist.json] [--max-words 4] [--max-chars 22] [--upper]
-Writes captions.srt (for Premiere caption tracks / CapCut import) and captions.ass (burn-in, with
-the spoken word highlighted, styled from presets/captions.md defaults).
+Writes captions.srt (for Premiere caption tracks / CapCut import) and captions.ass (burn-in in the
+chosen style).
 --cutlist maps source times onto the cut timeline and drops words that were cut.
 """
 import argparse
@@ -93,6 +95,7 @@ PlayResY: 1920
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Card,{font},{size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,6,0,2,90,90,{margin_v},1
+Style: Box,{font},{size},&H00111111,&H00111111,&H00FFFFFF,&H00FFFFFF,1,0,0,0,100,100,0,0,3,14,0,2,110,110,{margin_v},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -104,11 +107,12 @@ def main() -> None:
     ap.add_argument("words_json")
     ap.add_argument("--out", required=True, help="output path without extension")
     ap.add_argument("--cutlist")
-    ap.add_argument("--max-words", type=int, default=4)
-    ap.add_argument("--max-chars", type=int, default=22)
+    ap.add_argument("--style", choices=["box", "outline"], default="box")
+    ap.add_argument("--max-words", type=int, default=None, help="default 7 (box) or 4 (outline)")
+    ap.add_argument("--max-chars", type=int, default=None, help="default 40 (box) or 22 (outline)")
     ap.add_argument("--upper", action="store_true")
     ap.add_argument("--font", default="Montserrat ExtraBold")
-    ap.add_argument("--size", type=int, default=78)
+    ap.add_argument("--size", type=int, default=None, help="default 62 (box) or 78 (outline)")
     ap.add_argument("--highlight", default="&H0000D7FF", help="ASS colour (BGR) of the spoken word")
     ap.add_argument("--margin-v", type=int, default=520, help="px from the bottom (keeps out of the UI)")
     args = ap.parse_args()
@@ -116,7 +120,11 @@ def main() -> None:
     words = json.loads(Path(args.words_json).read_text(encoding="utf-8"))["words"]
     if args.cutlist:
         words = remap(words, json.loads(Path(args.cutlist).read_text(encoding="utf-8")))
-    cards = chunk(words, args.max_words, args.max_chars)
+    box = args.style == "box"
+    max_words = args.max_words or (7 if box else 4)
+    max_chars = args.max_chars or (40 if box else 22)
+    size = args.size or (62 if box else 78)
+    cards = chunk(words, max_words, max_chars)
 
     def txt(w):
         s = w["word"].strip()
@@ -132,6 +140,10 @@ def main() -> None:
 
     events = []
     for c in cards:
+        if box:
+            events.append(f"Dialogue: 0,{ass_t(c[0]['start'])},{ass_t(c[-1]['end'])},Box,,0,0,0,,"
+                          + " ".join(txt(w) for w in c))
+            continue
         for i, w in enumerate(c):
             start = w["start"] if i else c[0]["start"]
             end = c[i + 1]["start"] if i + 1 < len(c) else c[-1]["end"]
@@ -139,7 +151,7 @@ def main() -> None:
                      for j, x in enumerate(c)]
             events.append(f"Dialogue: 0,{ass_t(start)},{ass_t(end)},Card,,0,0,0,,{' '.join(parts)}")
     out.with_suffix(".ass").write_text(
-        ASS_HEAD.format(font=args.font, size=args.size, margin_v=args.margin_v) + "\n".join(events) + "\n",
+        ASS_HEAD.format(font=args.font, size=size, margin_v=args.margin_v) + "\n".join(events) + "\n",
         encoding="utf-8")
     print(f"{len(cards)} cards -> {out.with_suffix('.srt')} and .ass")
 

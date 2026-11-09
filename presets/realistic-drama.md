@@ -1,6 +1,7 @@
 # Preset: Realistic drama
 
-> DRAFT by Claude, 2026-11-07. Salam to review.
+> Written 2026-11-07, checked against Lumin's ads 2026-11-09 (see `playbook/what-sells.md`).
+> Salam can still correct it; add the change to `rules.md`.
 
 For dramatic personal-story ads ("I walked into church without my wig", a partner's comment, a photo
 that made her cry). Still real people and real homes, but filmed like a short scene, not a selfie.

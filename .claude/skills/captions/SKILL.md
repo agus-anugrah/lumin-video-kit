@@ -12,7 +12,7 @@ Style rules are in `presets/captions.md`. Read them first.
    `python3 scripts/captions.py <job>/transcript/words.json --out <job>/captions/captions --cutlist <job>/cuts/cutlist.json`
    For a VO-only ad leave out `--cutlist`.
 2. Read `captions.srt` top to bottom and fix by hand:
-   - every card reads as a little unit of meaning (1–4 words); never split a name, a number and its
+   - every card reads as a little unit of meaning; never split a name, a number and its
      unit, or "Root Revive"
    - spelling of product and ingredient names: Lumin, Root Revive, sea moss, black seed, turmeric, CCCA
    - the transcript may mishear words (check against the script, which wins)
@@ -21,7 +21,8 @@ Style rules are in `presets/captions.md`. Read them first.
      tell the editor to apply the Lumin caption track style (Premiere can't set the style from a file).
    - **CapCut**: give the editor `captions.srt` to import (Text > Captions > import), or burn in.
    - **Burn-in / review**: set `"captions": "<job>/captions/captions.ass"` in `timeline.json` and render
-     with `--burn-captions`. The `.ass` has the spoken word highlighted.
+     with `--burn-captions`. Default style is the winners' black text on a white box; pass
+     `--style outline` to captions.py for white text with the spoken word in yellow.
 4. Check frames from the render: captions inside the safe zone, not covering a face or the bottle,
    readable on bright backgrounds.
 

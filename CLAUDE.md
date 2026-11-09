@@ -8,7 +8,10 @@ taste decisions; you do the busy work and never write prompts they have to fix.
 ## What Lumin sells
 
 **Root Revive Capsules** (trylumin.co): an oral hair-growth supplement. Bottle of 60 capsules,
-30-day supply, 2 a day with food. Ingredients named in ads: sea moss, black seed, turmeric.
+30-day supply, 2 a day with food. The label says: black seed extract, bamboo extract, pumpkin seed
+extract, +17 growth ingredients. The site and some scripts also name sea moss and turmeric, and scripts
+say "17" or "20 clinically proven ingredients": use what the batch's brief says, and flag a mismatch
+with the label for the strategist. Bottle photos: `references/product/`.
 
 Customer: Black women, mostly 35–60, with thinning edges, traction alopecia, CCCA or breakage, often
 after years of relaxers, heat, tight braids, weaves or wigs. Many hide it with wigs, scarves or hats

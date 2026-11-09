@@ -1,6 +1,7 @@
 # Preset: 3D animated
 
-> DRAFT by Claude, 2026-11-07. Salam to review.
+> Written 2026-11-07, checked against Lumin's ads 2026-11-09 (see `playbook/what-sells.md`).
+> Salam can still correct it; add the change to `rules.md`.
 
 For explainer moments (what happens at the follicle, why tight styles cause traction, how inflammation
 blocks growth) and for whole animated ads when the brief asks for a family-film 3D look.

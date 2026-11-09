@@ -1,6 +1,7 @@
 # Preset: Ancient African story
 
-> DRAFT by Claude, 2026-11-07. Salam to review. Respect matters here: get the culture right.
+> Written 2026-11-07 for the ancient African story angle; no winning ad of this angle reviewed yet.
+> Respect matters here: get the culture right. Salam can still correct it in `rules.md`.
 
 For the "ancient African secret" angle: how women in West and East Africa cared for their hair with
 plants like black seed, sea moss and turmeric, told as a short story that leads to Root Revive.
