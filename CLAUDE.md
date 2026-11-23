@@ -51,7 +51,7 @@ Lumin codes: BP = big project (new production) in **VS** (short, 9:16), **VM** (
    writing any prompt. One preset and one cast per ad.
 6. **Still first, then video.** Approve the still before spending on a clip.
 7. **Ask before spending.** Before any generation: what, which model, how many, the cost
-   (`higgsfield generate cost` / Weave quote) and the balance (`higgsfield account status`). Wait for
+   (`higgsfield generate cost` / Weave quote / `scripts/kie.py quote`) and the balance (`higgsfield account status`). Wait for
    "go". Always pass generation counts explicitly.
 8. **Check your own output.** Look at every still and at frames of every clip and render
    (`scripts/frames.sh`); measure loudness (`scripts/loudness.py`). Say what you checked. Never call a
@@ -73,6 +73,7 @@ Lumin codes: BP = big project (new production) in **VS** (short, 9:16), **VM** (
 | What's working now (automatic, before the plan) | `research` | competitors' top ads (TrendTrack, saved daily in the app) + ours around the batch's date → findings + proposed brief |
 | Will it sell? (plan + final) | `sell-check` | score script, storyboard and ad against `playbook/what-sells.md` |
 | Whole AI ad from a script | `ai-ad` | plan → VO → sheets → storyboard → clips → sound/captions → assembled draft |
+| AI Commerce / Kie (any step) | `ai-commerce` | AI Commerce's format library and flips as references at the plan; Kie (Seedance, Wan, nano-banana, Suno) as a second generator; same stops and cost approvals |
 | Single shots / B-roll gaps | `broll` | shot plan → stills → pick → clip |
 | Real footage | `rough-cut` | transcribe → cut pauses, fillers, retakes → timeline |
 | Voice, SFX, music | `voice-music` | ElevenLabs VO and SFX, ElevenLabs or Suno music, vocals check |
@@ -91,6 +92,8 @@ Load the stage's skill before starting that stage.
 | New job / resume | `python3 scripts/new_job.py`, then the job's `job.md` |
 | Stills and clips | **Higgsfield CLI** (`higgsfield model list`, `model get <id> --json`, `generate cost`, `generate create`, `soul-id`, `product-photoshoot`) and Higgsfield's own `higgsfield-generate` skill for exact flags. Don't guess flags; run `--help`. |
 | Models | Stills: Nano Banana Pro / 2, Seedream, GPT Image, Soul (+ Soul ID). Clips: Kling 4.0 (B-roll), Seedance 2.5 (talking heads, VO as audio for lip sync), Veo. |
+| Second generator: Kie | `python3 scripts/kie.py quote|approve|picture|clip|song|fetch|spent ...` (Seedance 2.5, Wan 3.0, nano-banana-pro, Suno V6), needs `KIE_API_KEY`; ledger per job; see the `ai-commerce` skill |
+| Format library | **AI Commerce connector** (`get_brand_profile` "Lumin", `analyze_example_ad`, `get_format`, `list_storylines`): references only, after the research; never its one-shot flip |
 | Backup generator | **Figma connector → Weave** (`weave_find_model`, `weave_run_model`): Kling 4.0, Nano Banana, Veo on Weave credits; it quotes cost first, get an explicit yes. |
 | Voiceover, transcription | **ElevenLabs connector** (voices, speech, Scribe) |
 | SFX, music, voice changer | ElevenLabs' official skills (`elevenlabs/skills`, uses the editor's key in `~/.elevenlabs/.env`) |

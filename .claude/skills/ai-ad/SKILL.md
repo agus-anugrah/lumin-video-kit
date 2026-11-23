@@ -19,6 +19,10 @@ brief + script ─► 0 research ─► 1 plan ─► STOP ─► 2 voiceover �
    ─► STOP ─► 5 clips ─► 6 sound + captions ─► 7 assemble ─► 8 review
 ```
 
+**Using AI Commerce or Kie?** Load the `ai-commerce` skill too: it says what changes at each step (library
+references at the plan, Kie at sheets, storyboard, clips and songs). The steps and stops below stay the same, and
+AI Commerce's own one-shot flip is never used.
+
 Start from the batch in the Lumin app when there is one: `python3 scripts/lumin_batch.py get <code>`
 (or part of its name). It creates the job folder with `brief.md` (angle, awareness, funnel, audience,
 format, hooks, files) and `script.txt` (the batch's own script tab), **and runs the research** into
