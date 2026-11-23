@@ -59,7 +59,22 @@ the dialogue; leave it off when the VO or song carries the sound. Models cut whe
 each clip before captioning, and time captions to the real cuts. Check frames as in `ai-ad` step 5. Phone screens
 and small label text come out garbled: cover them in the edit or redo the shot.
 
-**6–8. Sound, captions, assemble, review.** Unchanged (`captions`, `voice-music`, `finish`).
+**Retry one scene.** After the clips, show the editor every clip (frames) and let them name the weak ones.
+`python3 scripts/kie.py scenes <job>` lists each scene with its take and the cost of one retake;
+`python3 scripts/kie.py retake <job> <scene> --note "<what to fix>"` redoes only that scene from its saved spec (same
+references, same length; the note is added as a fix). The old file is kept as `<scene>_take1`, so the editor can pick.
+A retake is new spend: quote it, get the editor's go, raise the ceiling with `approve`, never retake on your own.
+
+**6–8. Hand-over to the editor: a Premiere timeline, clean video, captions as a file.**
+Write `<job>/edit.json` (song, lyrics, transcript, end, one section per shot on the song's clock; format at the top
+of `scripts/song_timeline.py`), then `python3 scripts/song_timeline.py <job>`. It writes:
+- `timeline/<name>.xml`: the sequence for Premiere (File > Import, or the `premiere` skill's `import_fcp_xml`),
+  with every clip, still and the song in place, linked to the original files;
+- `captions/captions.srt`: the lyrics timed to the singing, for a Premiere caption track in the team's normal style;
+- `renders/<name>_review.mp4`: a clean review video. **No burned-in captions**: the editor adds captions in
+  Premiere. Burn them only when someone asks (`--burn`).
+Then `sell-check` on the cut and the `finish` skill as usual. The VE polishes in Premiere; the kit doesn't ship a
+"final" MP4 for AI Commerce ads.
 
 ## Money
 `kie.py` writes every paid call to `<job>/kie/ledger.json` before sending it and refuses past the approved

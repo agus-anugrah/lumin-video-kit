@@ -92,7 +92,7 @@ Load the stage's skill before starting that stage.
 | New job / resume | `python3 scripts/new_job.py`, then the job's `job.md` |
 | Stills and clips | **Higgsfield CLI** (`higgsfield model list`, `model get <id> --json`, `generate cost`, `generate create`, `soul-id`, `product-photoshoot`) and Higgsfield's own `higgsfield-generate` skill for exact flags. Don't guess flags; run `--help`. |
 | Models | Stills: Nano Banana Pro / 2, Seedream, GPT Image, Soul (+ Soul ID). Clips: Kling 4.0 (B-roll), Seedance 2.5 (talking heads, VO as audio for lip sync), Veo. |
-| Second generator: Kie | `python3 scripts/kie.py quote|approve|picture|clip|song|fetch|spent ...` (Seedance 2.5, Wan 3.0, nano-banana-pro, Suno V6), needs `KIE_API_KEY`; ledger per job; see the `ai-commerce` skill |
+| Second generator: Kie | `python3 scripts/kie.py quote|approve|picture|clip|song|scenes|retake|fetch|spent ...` (`retake <job> <scene> --note` redoes one scene, old take kept) (Seedance 2.5, Wan 3.0, nano-banana-pro, Suno V6), needs `KIE_API_KEY`; ledger per job; see the `ai-commerce` skill |
 | Format library | **AI Commerce connector** (`get_brand_profile` "Lumin", `analyze_example_ad`, `get_format`, `list_storylines`): references only, after the research; never its one-shot flip |
 | Backup generator | **Figma connector → Weave** (`weave_find_model`, `weave_run_model`): Kling 4.0, Nano Banana, Veo on Weave credits; it quotes cost first, get an explicit yes. |
 | Voiceover, transcription | **ElevenLabs connector** (voices, speech, Scribe) |
@@ -102,6 +102,7 @@ Load the stage's skill before starting that stage.
 | Cuts | `python3 scripts/cutlist.py <words.json> --out <job>/cuts` + your own read |
 | Captions | `python3 scripts/captions.py <words.json> --out <job>/captions/captions [--cutlist ...]` |
 | Edit for Premiere / Resolve | `python3 scripts/xml_export.py <timeline.json> --out <job>/timeline/<CODE>.xml` → MCP `import_fcp_xml` |
+| Song-led AI ad → Premiere | `python3 scripts/song_timeline.py <job>` (reads `<job>/edit.json`): timeline.json + Premiere XML + captions SRT + clean review MP4 (captions burned only with `--burn`) |
 | Review video / CapCut delivery | `python3 scripts/render.py <timeline.json> --out <job>/renders/<CODE>.mp4 [--burn-captions]` |
 | Loudness | `python3 scripts/loudness.py measure|normalize ...` (targets in `presets/audio.json`) |
 | Music has no vocals | `.venv/bin/python scripts/vocals_check.py <music>` (Demucs) |

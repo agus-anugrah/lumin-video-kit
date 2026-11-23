@@ -11,6 +11,9 @@ never printed or saved).
   python3 scripts/kie.py picture <job> --id hero_wig --prompt "..." [--ref path ...] [--out <file>]
   python3 scripts/kie.py clip <job> --id s03 --seconds 12 --prompt "..." --ref <still or sheet> ... [--model seedance|wan] [--res 480p|720p] [--audio]
   python3 scripts/kie.py song <job> --lyrics lyrics.txt --style "..." --title "..." --seconds 120
+  python3 scripts/kie.py scenes <job>                       # every scene made here: takes, file, cost of one retake
+  python3 scripts/kie.py retake <job> s07 [--note "the husband looks disgusted"] [--seconds 8]
+                                               # redo ONE scene from its saved spec; the old file is kept as s07_take1.mp4
   python3 scripts/kie.py fetch <job>          # download anything that finished (after a timeout or a dropped connection)
   python3 scripts/kie.py spent <job>
 """
@@ -142,6 +145,21 @@ def finish(L, jid, outs):
 
 
 # ---------------------------------------------------------------- commands
+def specs_path(job): return os.path.join(job, "kie", "scenes.json")
+
+
+def load_specs(job):
+    p = specs_path(job)
+    return json.load(open(p)) if os.path.exists(p) else {}
+
+
+def save_spec(job, sid, spec):
+    specs = load_specs(job); old = specs.get(sid, {})
+    spec.setdefault("take", old.get("take", 1)); specs[sid] = spec
+    os.makedirs(os.path.dirname(specs_path(job)), exist_ok=True)
+    json.dump(specs, open(specs_path(job) + ".part", "w"), indent=2); os.replace(specs_path(job) + ".part", specs_path(job))
+
+
 def cmd_quote(a):
     m = MODELS[a.model]; rate = m["usd_per_s"].get(a.res)
     if rate is None: sys.exit(f"No price recorded for {a.model} at {a.res}. Recorded: {m['usd_per_s']}")
@@ -163,10 +181,12 @@ def cmd_approve(a):
 def cmd_picture(a):
     L = Ledger(a.job); refs = a.ref or []
     inp = {"prompt": a.prompt, "aspect_ratio": a.aspect, "resolution": "1K", "output_format": "jpg"}
-    jid = job_id("picture", a.id, {**inp, "refs": refs})
+    take = getattr(a, "take", 1); out = a.out or os.path.join(a.job, "stills", a.id + ".jpg")
+    jid = job_id("picture", a.id, {**inp, "refs": refs, **({"take": take} if take > 1 else {})})
+    save_spec(a.job, a.id, {"kind": "picture", "prompt": a.prompt, "refs": refs, "aspect": a.aspect, "out": out, "take": take})
     inp["image_input"] = [upload(L, r) for r in refs]
     create(L, jid, PICTURE["id"], inp, PICTURE["usd"]); print("submitted", jid)
-    finish(L, jid, [a.out or os.path.join(a.job, "stills", a.id + ".jpg")])
+    finish(L, jid, [out])
 
 
 def cmd_clip(a):
@@ -174,13 +194,16 @@ def cmd_clip(a):
     secs = int(max(m["min"], min(m["max"], round(a.seconds))))
     rate = m["usd_per_s"].get(a.res)
     if rate is None: sys.exit(f"No price recorded for {a.model} at {a.res}")
+    take = getattr(a, "take", 1); out = a.out or os.path.join(a.job, "clips", a.id + ".mp4")
+    save_spec(a.job, a.id, {"kind": "clip", "prompt": a.prompt, "refs": refs, "seconds": a.seconds, "model": a.model, "res": a.res,
+                            "aspect": a.aspect, "audio": bool(a.audio), "out": out, "take": take})
     prompt = a.prompt
     if refs and m["tag"] == "@image": prompt = "REFERENCES: " + " ".join(f"@image{i + 1} = {os.path.basename(r)}." for i, r in enumerate(refs)) + " " + prompt
     inp = {"prompt": prompt, "duration": secs, "resolution": m["res"][a.res], "aspect_ratio": a.aspect, m["audio"]: bool(a.audio)}
-    jid = job_id("clip", a.id, {**inp, "refs": refs, "model": a.model})
+    jid = job_id("clip", a.id, {**inp, "refs": refs, "model": a.model, **({"take": take} if take > 1 else {})})
     inp["reference_image_urls"] = [upload(L, r) for r in refs]
     create(L, jid, m["id"], inp, secs * rate); print("submitted", jid)
-    finish(L, jid, [a.out or os.path.join(a.job, "clips", a.id + ".mp4")])
+    finish(L, jid, [out])
 
 
 def cmd_song(a):
@@ -204,6 +227,38 @@ def cmd_fetch(a):
             except Exception as e: print(jid, "-", e)
 
 
+def cmd_scenes(a):
+    specs = load_specs(a.job)
+    if not specs: sys.exit("No scenes recorded for this job yet (scenes made with kie.py picture/clip are recorded).")
+    for sid, sp in specs.items():
+        cost = PICTURE["usd"] if sp["kind"] == "picture" else MODELS[sp["model"]]["usd_per_s"].get(sp["res"], 0) * int(round(sp["seconds"]))
+        print(f"{sid:10} {sp['kind']:7} take {sp.get('take', 1)}  {os.path.relpath(sp['out'], a.job):24}  one retake ≈ ${cost:.2f}")
+
+
+def cmd_retake(a):
+    """Redo one scene from its saved spec. The current file is kept as <id>_take<N>; a --note is added to the prompt as a fix."""
+    specs = load_specs(a.job); sp = specs.get(a.id)
+    if not sp: sys.exit(f"{a.id}: no saved spec. Run `kie.py scenes {a.job}` to see what can be retaken.")
+    old = sp.get("take", 1); out = sp["out"]
+    if os.path.exists(out):
+        base, ext = os.path.splitext(out); os.replace(out, f"{base}_take{old}{ext}")
+    prompt = sp["prompt"] + (f" FIX FOR THIS TAKE: {a.note}" if a.note else "")
+    ns = argparse.Namespace(job=a.job, id=a.id, prompt=prompt, ref=sp["refs"], aspect=sp.get("aspect", "9:16"), out=out, take=old + 1)
+    try:
+        if sp["kind"] == "picture":
+            cmd_picture(ns)
+        else:
+            ns.seconds = a.seconds or sp["seconds"]; ns.model = sp["model"]; ns.res = sp["res"]; ns.audio = sp.get("audio", False)
+            cmd_clip(ns)
+    except BaseException:
+        base, ext = os.path.splitext(out)
+        if not os.path.exists(out) and os.path.exists(f"{base}_take{old}{ext}"): os.replace(f"{base}_take{old}{ext}", out)   # put the old take back
+        raise
+    specs = load_specs(a.job); specs[a.id]["prompt"] = sp["prompt"]                                                          # keep the base prompt clean
+    json.dump(specs, open(specs_path(a.job), "w"), indent=2)
+    print(f"{a.id}: take {old + 1} saved; take {old} kept as {os.path.basename(os.path.splitext(out)[0])}_take{old}{os.path.splitext(out)[1]}")
+
+
 def cmd_spent(a):
     L = Ledger(a.job); ap = L.s["approved"] or {}
     print(f"spent about ${L.spent():.2f} of ${ap.get('ceiling_usd', 0):.2f} approved ({len(L.s['spend'])} paid calls)")
@@ -223,6 +278,9 @@ def main():
     so = sub.add_parser("song"); so.add_argument("job"); so.add_argument("--lyrics", required=True); so.add_argument("--style", required=True)
     so.add_argument("--title", required=True); so.add_argument("--seconds", type=float, required=True); so.add_argument("--vocal", default="f")
     so.add_argument("--negative", default="male vocals, rap, EDM drop"); so.set_defaults(fn=cmd_song)
+    sc = sub.add_parser("scenes"); sc.add_argument("job"); sc.set_defaults(fn=cmd_scenes)
+    rt = sub.add_parser("retake"); rt.add_argument("job"); rt.add_argument("id"); rt.add_argument("--note", default="")
+    rt.add_argument("--seconds", type=float); rt.set_defaults(fn=cmd_retake)
     fe = sub.add_parser("fetch"); fe.add_argument("job"); fe.set_defaults(fn=cmd_fetch)
     sp = sub.add_parser("spent"); sp.add_argument("job"); sp.set_defaults(fn=cmd_spent)
     a = p.parse_args(); a.fn(a)
