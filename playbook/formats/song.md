@@ -49,6 +49,12 @@ they said about her hair**, and **who watched**.
 - Captions: white sentence case with a dark outline, 2–4 words, no colour. The lead reads 30s and pretty
   in the cartoon style, like the Pixar winner.
 
+## Latest calls (2026-11-17 to 11-22): read before making a song
+**A proven ad turned into a Pixar-style song lost 4 of 4** (hairstylist song, cheated R&B, club spill,
+beanie). Pixar-Style Song: 1 winner in 13 tests over the last 30 days. A song is not a way to refresh an old
+script: it needs its own new emotional trigger (Lymphoria's was the family that preferred her in the wig).
+If the batch is "winning script X, now as a song", flag it in the plan and `sell-check`.
+
 ## Test
 - The two best song ads both say the offer (60% off, 90-day guarantee, link below) in the last lines.
   Keep it; add an on-screen offer card under the last verse.

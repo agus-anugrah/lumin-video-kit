@@ -55,6 +55,13 @@ Hiding, or Stressing", Shop now.
 - Captions: 2–3 words, bold white capitals, one key word yellow, lower middle.
 - **Ends on her face with no offer card, no bottle, no URL** on screen. Biggest gap to test (below).
 
+## Latest calls (2026-11-17 to 11-22)
+- Won: Daniel Batch 74 momsverdict ($8.2k), a mother calling her daughter out about her hair and wigs. A new
+  cruel person, same 12 beats.
+- Lost: winners re-skinned as AI Pixar VSLs (stylist Pixar, restaurant proposal, cookout). AI Pixar VSL is
+  0 of 7 in the last 30 days; Animation Ad 1 of 23; Pixar-Style VSL 3 of 7 (ROAS 0.75).
+- So: bring a new trigger (who shames her, how), not an old script in a new look.
+
 ## Test (our hypotheses for the sale end; these ads sit at ROAS ~0.8)
 - The offer appears once, inside the mentor's dialogue, 4 minutes in. Add an **offer card** (60% off for
   first-time customers if the brief says so, 90-day guarantee, trylumin.co) at beat 9 and again at the end.

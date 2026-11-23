@@ -1,7 +1,8 @@
 # What sells for Lumin
 
 Built 2026-11-09 from the Lumin app's Meta data (account since 2025-07-01), the winning scripts in
-Drive, a frame-by-frame look at the top ads (Meta previews) and at six ads the team called bad. Numbers are Meta-reported (ROAS =
+Drive, a frame-by-frame look at the top ads (Meta previews) and at six ads the team called bad. Refreshed
+2026-11-23 with the last 30 days by format and angle, and the batches called 2026-11-17 to 11-22. Numbers are Meta-reported (ROAS =
 purchase value ÷ spend, CPA = spend ÷ purchases, hook = 3-second views ÷ impressions, hold =
 ThruPlays ÷ impressions). Use them to compare ads with each other, not as profit.
 
@@ -15,6 +16,48 @@ says which one a batch uses.
 
 Account, last 60 days: **$921k spend, ROAS 0.86, CPA $65, hook 25.8%, hold 11.0%.**
 An ad that beats those is above average.
+
+### Last 30 days, to 2026-11-23 (Lumin app, Meta)
+
+Account: **$403,595 spend, ROAS 0.82.** Winners = batches that spent over $5,000 since launch (spend, not
+profit). Selected rows:
+
+| Format (app label) | Tested | Winners | Spend | ROAS |
+|---|---|---|---|---|
+| UGC Talking head | 45 | 8 (18%) | $80,807 | 0.86 |
+| Pixar-Style VSL | 7 | 3 (**43%**) | $43,701 | 0.75 |
+| Animation Ad | 23 | 1 (4%) | $42,273 | 0.73 |
+| VSL | 46 | 10 (22%) | $34,120 | 0.82 |
+| Pixar-Style Song | 13 | 1 (8%) | $28,280 | 0.83 |
+| Sale Ad | 9 | 1 (11%) | $16,988 | 0.93 |
+| Voiceover w/ b-roll | 14 | 0 | $14,735 | 0.95 |
+| AI Pixar VSL | 7 | 0 | $6,885 | 0.83 |
+| Cinematic | 5 | 1 (20%) | $6,775 | 0.58 |
+| Movie Scene AI | 4 | 1 (25%) | $6,084 | 0.72 |
+| Static | 11 | 0 | $2,161 | 0.53 |
+| Personal VSL | 8 | 0 | $1,365 | 0.31 |
+| B-roll VSL | 7 | 0 | $939 | 0.37 |
+
+| Angle | Tested | Winners | Spend | ROAS |
+|---|---|---|---|---|
+| Personal story | 52 | 7 (13%) | $103,357 | 0.77 |
+| Sale and urgency | 29 | 8 (**28%**) | $47,997 | 0.96 |
+| AI Storytelling | 17 | 3 (18%) | $36,695 | 0.74 |
+| Objection handling | 49 | 4 (8%) | $36,158 | 0.91 |
+| Before and after proof | 163 | 14 (9%) | $32,636 | 0.74 |
+| Male audience | 7 | 2 (29%) | $32,024 | 0.84 |
+| Offer-focused | 57 | 4 (7%) | $20,541 | **1.00** |
+| Menopause | 10 | 2 (20%) | $18,567 | 0.91 |
+| Dramatic personal story | 88 | 8 (9%) | $10,929 | 0.78 |
+| Personal transformation | 137 | 16 (12%) | $9,731 | 0.89 |
+| Other treatments don't work | 34 | 1 (3%) | $7,562 | 0.79 |
+| Expert endorsement | 19 | 0 | $3,302 | 0.81 |
+
+What moved since 2026-11-09: the offer still pays best (Sale and urgency wins most often, Offer-focused is
+the only angle at ROAS 1.00); Pixar-Style VSL wins most often of the story formats but at ROAS 0.75;
+Animation Ad and Pixar-Style Song rarely win; UGC talking heads and VSLs carry the most winners.
+
+The table below is the longer-run view from 2026-11-09 (60 days, with hook and hold).
 
 | Format | Examples | Hook | Hold | ROAS | CPA | Job |
 |---|---|---|---|---|---|---|
@@ -100,6 +143,38 @@ midnight, 60% off + free shipping) → a 2-line transformation story → guarant
 ## Offer facts used in winning scripts (check the brief, it wins)
 90-day money-back guarantee · 60% off for first-time customers · free shipping · under $1 a day
 (site says under $0.75) · 2 capsules a day · black seed, turmeric, sea moss · Black-owned · trylumin.co.
+
+## Latest calls (batches called 2026-11-17 to 11-22)
+
+33 calls in the app's Learnings (10 winners, 23 losers). Nobody has written the "what we learned" text or
+factors yet, so the reasons below are the strategists' own hypotheses from the scripts, written before launch.
+
+Winners:
+- **Pixar-Style VSL, the mean mom** (Daniel Batch 74 momsverdict, $8.2k): a mother calling her daughter out
+  about her hair and her wigs.
+- **UGC, barbers as the authority** (Daniel Batch 55 barber, $8.0k): barbers are trusted; the claim is that
+  it regrows, not just stops the loss.
+- **UGC, "women in Africa braid and keep their hair"** (Daniel Batch 56 nigerianviral, $5.4k): the variant
+  that picked up named the core desire.
+- **Movie Scene AI** (Emko Batch 013, $5.1k): a high-drama weight-loss movie scene rewritten for hair loss.
+- **Cinematic, the pregnant aunt** (Daniel Batch 48, $5.3k): drama that crosses moral lines.
+- **Podcast, Fly to Africa** (Daniel Batch 26, $7.7k): other treatments don't work.
+- **Men, failed solutions + DHT** (Daniel Batch 36, $5.5k).
+- **Sale ads**: Amar Sale Aggressive Push ($10.0k, inspired by a Rosabella ad), Halloween Batch 2 ($6.9k),
+  Emko Batch 010 BOF ("giving money away" on Black Friday, $6.1k).
+
+Losers, and the pattern:
+- **A proven ad turned into a Pixar-style song lost 4 of 4** (hairstylist song, cheated R&B, club spill, beanie).
+- **A winner re-skinned as an AI Pixar VSL lost** (stylist Pixar, restaurant proposal, cookout).
+- Personal VSLs (God regrew her hair, newly single, "I tried everything" YouTube style), a retro-series
+  nostalgia ad (Living Single), the "AI doll speed-dating" animation, the christening revenge animation and
+  the statics all lost on $150–800.
+
+**Takeaway: a new format on an old script is not enough.** The winners found a new emotional trigger (the mean
+mom, the barber's authority, the African-hair desire, moral-line drama) or led with the offer. When planning,
+say which new trigger the batch brings; "same script, new format" alone is a FIX in `sell-check`.
+
+Refresh this section from the app's Learnings page (batch_learnings) when the strategists write their notes.
 
 ## Why the six "bad" ads failed (looked at frame by frame)
 

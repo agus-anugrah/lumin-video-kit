@@ -23,6 +23,10 @@ delivery until it's fixed or the strategist says to go anyway.
    guarantee → offer + CTA; the others: their file in `playbook/formats/`). Missing beats = FIX (say which
    and where). In the story formats, also check the offer is said near the end and gets an on-screen
    offer card (the beat maps' "Test" lines).
+3b. **New trigger, not just a new format.** If the batch is a known winning script redone as a song, an AI Pixar
+   VSL or another new look, name the new emotional trigger it brings (a new cruel person, a new authority, a new
+   desire, a new offer). None = FIX: the latest calls lost 4 of 4 songs and every re-skinned AI Pixar VSL that
+   only changed the format (`playbook/what-sells.md`, "Latest calls").
 4. **Avatar** in the words and the visuals matches the brief (Black women, default 40–60). Off-avatar
    (men, young glam) = FIX unless the brief asks for it (Batch 54 darnell is a men's ad that works).
 5. **Offer facts** match the brief (guarantee days, discount, shipping). Unknown = ask, don't invent.

@@ -5,19 +5,41 @@ writes the matching beat map into `brief.md`. Plan the ad on that beat map; `sel
 If the format is empty or unknown, the batch reader looks for a format line in the script's header
 ("Format/Style", "AD FORMAT"). Still nothing: ask the strategist.
 
-| Family | App labels | Beat map |
-|---|---|---|
-| **3D Pixar** | Pixar-Style VSL, AI Pixar VSL, Animation Ad, AI - Talking - Animated | `pixar.md` |
-| **Song** | Pixar-Style Song, Singing Animation, AI - Singing - Animated, AI Song | `song.md` |
-| **Movie drama (full AI)** | Movie Scene AI, Cinematic, Real-Life Cinema, AI Movie Style | `movie-drama.md` |
-| **Story VSL** | VSL, Personal VSL, B-roll VSL, AI-VSL, AI Talking Head VSL, Voiceover w/ b-roll, Podcast, UGC Talking head, Transformation | `../what-sells.md` (the 12-beat VSL) |
-| **Sale** | Sale Ad | `../what-sells.md` (sale ad) |
-| Static | Static | not a video; the kit doesn't make statics |
+| Family | App labels | Beat map | Closest AI Commerce cards |
+|---|---|---|---|
+| **3D Pixar** | Pixar-Style VSL, AI Pixar VSL, Animation Ad, AI - Talking - Animated | `pixar.md` | V22 + workflow `3d-animated-stories` (VSL arc V87) |
+| **Song** | Pixar-Style Song, Singing Animation, AI - Singing - Animated, AI Song | `song.md` | V101 + workflow `song-ads` |
+| **Movie drama (full AI)** | Movie Scene AI, Cinematic, Real-Life Cinema, AI Movie Style | `movie-drama.md` | V39 (scripted drama), V23 (photoreal mini-movie) |
+| **Story VSL** | VSL, Personal VSL, B-roll VSL, AI-VSL, AI Talking Head VSL, Voiceover w/ b-roll, Podcast, UGC Talking head, Transformation | `../what-sells.md` (the 12-beat VSL) | V87 (VSL), V44 (UGC talking head), V03 (podcast) |
+| **Sale** | Sale Ad | `../what-sells.md` (sale ad) | V62 (comment-reply video) |
+| Mechanism insert | (inside any format) | the beat map's mechanism beat | V04 (3D "what happens inside") |
+| Static | Static | not a video; the kit doesn't make statics | — |
+
+The AI Commerce column maps our families to the AI Commerce Ad Engine connector's format cards, for
+anyone planning a Lumin ad there. The Lumin brand profile in that connector (section 13) is a copy of this
+playbook: the kit is the source, so change it here first.
 
 New labels appear all the time. Map a new one by what the ad *is* (animated? sung? a movie scene?), and
 add it to this table and to `FAMILIES` in `scripts/lumin_batch.py`.
 
-## Last 30 days by family (to 2026-11-09, Meta-reported)
+## Last 30 days by family (to 2026-11-23, Meta-reported)
+
+Winners = batches over $5,000 spent. Full rows by app label in `../what-sells.md` ("Last 30 days").
+
+| Family | Labels counted | Tested | Winners | Spend | ROAS |
+|---|---|---|---|---|---|
+| 3D Pixar | Pixar-Style VSL 3/7 (0.75), Animation Ad 1/23 (0.73), AI Pixar VSL 0/7 (0.83) | 37 | 4 | $92.9k | 0.73–0.83 |
+| Song | Pixar-Style Song | 13 | 1 | $28.3k | 0.83 |
+| Movie drama | Movie Scene AI 1/4 (0.72), Cinematic 1/5 (0.58) | 9 | 2 | $12.9k | 0.58–0.72 |
+| Story VSL | UGC Talking head 8/45 (0.86), VSL 10/46 (0.82), Voiceover w/ b-roll 0/14 (0.95), Personal VSL 0/8, B-roll VSL 0/7 | 120 | 18 | $132k | 0.31–0.95 |
+| Sale | Sale Ad | 9 | 1 | $17.0k | 0.93 |
+| Account | all ads | — | — | $403.6k | 0.82 |
+
+Since 2026-11-09: Pixar-Style VSL wins most often (3 of 7) but Animation Ad (1 of 23) and songs (1 of 13)
+rarely do, and the latest calls show why: songs and AI Pixar VSLs made from old winning scripts lost (see
+`../what-sells.md`, "Latest calls"). Each story ad needs a new emotional trigger, not just a new format.
+
+## 2026-11-09 view (hook and hold, 30 days to 2026-11-09)
 
 | Family | Spend | ROAS | CPA | Hook | Hold |
 |---|---|---|---|---|---|
